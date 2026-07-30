@@ -21,9 +21,14 @@
   }
   .view-panel.active {
     display: block;
+    animation: fadeIn 0.3s ease-out forwards;
   }
 
-  /* ガラスモーフィズム風カード */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .glass-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
@@ -31,7 +36,6 @@
     box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.02);
   }
 
-  /* 提示資料メニューカード hover */
   .menu-card {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -41,7 +45,6 @@
     border-color: #10b981;
   }
 
-  /* トラックバウンスアニメーション */
   @keyframes truckBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-2.5px); }
@@ -50,7 +53,6 @@
     animation: truckBounce 0.22s ease-in-out infinite;
   }
 
-  /* 酸素（O₂）バブル積み下ろしアニメーション */
   @keyframes loadBubble {
     0% { opacity: 0; transform: translate(-8px, -18px) scale(0.4); }
     50% { opacity: 1; }
@@ -89,7 +91,6 @@
     animation: unloadBubble 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   }
 
-  /* 血管内を流れる血流パルス */
   .blood-flow-path {
     stroke-dasharray: 6, 8;
     animation: flowDashForward 0.7s linear infinite;
@@ -121,64 +122,54 @@
       </h1>
     </header>
 
-    <!-- グリッドメニュー -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-      
-      <!-- 01 -->
       <div onclick="switchView('view-v1')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4">
-        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black text-xl flex-shrink-0">
-          📈
-        </div>
+        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black text-xl flex-shrink-0">📈</div>
         <div>
           <span class="text-[10px] font-black tracking-widest text-indigo-600 block">SLIDE 01</span>
           <h2 class="text-base font-black text-slate-800">酸素解離曲線 拡大図</h2>
         </div>
       </div>
 
-      <!-- 02 -->
       <div onclick="switchView('view-v2')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-xl flex-shrink-0">
-          🚚
-        </div>
+        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-xl flex-shrink-0">🚚</div>
         <div>
           <span class="text-[10px] font-black tracking-widest text-amber-600 block">SLIDE 02</span>
           <h2 class="text-base font-black text-slate-800">酸素トラックの積み下ろし</h2>
         </div>
       </div>
 
-      <!-- 03 -->
       <div onclick="switchView('view-v3')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4">
-        <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-black text-xl flex-shrink-0">
-          ❓
-        </div>
+        <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-black text-xl flex-shrink-0">❓</div>
         <div>
           <span class="text-[10px] font-black tracking-widest text-rose-600 block">SLIDE 03</span>
           <h2 class="text-base font-black text-slate-800">仮に全部降ろしたら…</h2>
         </div>
       </div>
 
-      <!-- 04 -->
       <div onclick="switchView('view-v4')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4">
-        <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black text-xl flex-shrink-0">
-          👶
-        </div>
+        <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black text-xl flex-shrink-0">👶</div>
         <div>
           <span class="text-[10px] font-black tracking-widest text-sky-600 block">SLIDE 04</span>
-          <h2 class="text-base font-black text-slate-800">発展の問い（胎児・高地）</h2>
+          <h2 class="text-base font-black text-slate-800">発展① 胎児のヘモグロビン</h2>
         </div>
       </div>
 
-      <!-- 05 生徒用 -->
-      <div onclick="switchView('view-v5')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4 border-2 border-emerald-500/60 bg-emerald-50/40">
-        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-xl flex-shrink-0 shadow-md">
-          💻
+      <div onclick="switchView('view-v5')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl flex-shrink-0">⛰️</div>
+        <div>
+          <span class="text-[10px] font-black tracking-widest text-emerald-600 block">SLIDE 05</span>
+          <h2 class="text-base font-black text-slate-800">発展② 高地での酸素受給</h2>
         </div>
+      </div>
+
+      <div onclick="switchView('view-v6')" class="menu-card glass-card rounded-2xl p-5 cursor-pointer flex items-center gap-4 border-2 border-emerald-500/60 bg-emerald-50/40">
+        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-xl flex-shrink-0 shadow-md">💻</div>
         <div>
           <span class="text-[10px] font-black tracking-widest text-emerald-700 block">STUDENT APP</span>
           <h2 class="text-base font-black text-slate-900">生徒用シミュレーター</h2>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -194,13 +185,12 @@
     <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 max-w-4xl mx-auto text-center">
       <div class="flex justify-between items-center border-b pb-4">
         <h2 class="text-lg md:text-xl font-black text-slate-800">酸素解離曲線（大画面拡大表示）</h2>
-        <button id="v2-ans-toggle" class="px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-all">
-          肺・組織の答えを表示
+        <button id="v2-ans-toggle" class="px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-all shadow-md active:scale-95">
+          肺・組織の実際を表示
         </button>
       </div>
 
-      <!-- 大画面グラフ -->
-      <svg id="v2-graph" viewBox="0 0 320 210" class="w-full max-w-2xl h-auto bg-slate-50 rounded-2xl border border-slate-200 mx-auto cursor-crosshair p-2">
+      <svg id="v2-graph" viewBox="0 0 320 210" class="w-full max-w-2xl h-auto bg-slate-50 rounded-2xl border border-slate-200 mx-auto cursor-crosshair p-2 shadow-inner">
         <line x1="40" y1="180" x2="300" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
         <line x1="40" y1="20" x2="40" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
         <text x="170" y="203" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">酸素濃度（相対値）</text>
@@ -211,20 +201,17 @@
         <text x="300" y="192" text-anchor="middle" class="text-[9px] fill-slate-400">100</text>
         <line x1="40" y1="24.8" x2="300" y2="24.8" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
 
-        <!-- 曲線 -->
         <path d="M40,180 L66,141.0 L92,89.8 L118,61.0 L144,45.9 L170,37.6 L196,32.6 L222,29.4 L248,27.4 L274,25.9 L300,24.8" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
         <path d="M40,180 L66,169.0 L92,143.4 L118,116.0 L144,93.3 L170,76.2 L196,63.7 L222,54.6 L248,47.8 L274,42.9 L300,39.0" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round"/>
 
-        <!-- 答えプロット -->
         <g id="v2-answer-group" opacity="0" class="transition-opacity duration-300">
           <circle cx="300" cy="24.8" r="6" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
-          <text x="290" y="16" text-anchor="end" class="text-[12px] font-black fill-emerald-700">肺胞 (酸素100/割合97%)</text>
+          <text x="290" y="16" text-anchor="end" class="text-[12px] font-black fill-emerald-700">肺胞 (酸素濃度100 / 割合97%)</text>
           
           <circle cx="118" cy="116" r="6" fill="#f97316" stroke="#ffffff" stroke-width="2"/>
-          <text x="126" y="132" text-anchor="start" class="text-[12px] font-black fill-orange-700">組織 (酸素40/割合40%)</text>
+          <text x="126" y="132" text-anchor="start" class="text-[12px] font-black fill-orange-700">組織 (酸素濃度30 / 割合40%)</text>
         </g>
 
-        <!-- インタラクティブタップ線 -->
         <rect x="40" y="20" width="260" height="160" fill="transparent"/>
         <line id="v2-pick-x" x1="0" y1="0" x2="0" y2="180" stroke="#475569" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
         <line id="v2-pick-y" x1="40" y1="0" x2="0" y2="0" stroke="#475569" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
@@ -250,14 +237,12 @@
       <h2 class="text-lg md:text-xl font-black text-slate-800">「酸素トラック」積み下ろしモデル</h2>
 
       <div class="flex items-center justify-between text-xs font-bold px-2">
-        <span class="text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 shadow-sm">🫁 肺胞 (酸素: 100)</span>
-        <span class="text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200 shadow-sm">🦵 組織 (酸素: 40)</span>
+        <span class="text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 shadow-sm">🫁 肺胞 (酸素濃度: 100)</span>
+        <span class="text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200 shadow-sm">🦵 組織 (酸素濃度: 30)</span>
       </div>
 
-      <!-- バブルコンテナ -->
       <div id="bubbles3" class="flex gap-2 justify-center py-2"></div>
 
-      <!-- トラックレーン -->
       <div class="relative h-20 border-b-2 border-dashed border-slate-300 my-4">
         <div id="particle-container3" class="absolute inset-0 pointer-events-none"></div>
 
@@ -301,69 +286,71 @@
       <span class="text-xs font-bold text-slate-400">SLIDE 03 / 提示資料</span>
     </div>
 
-    <div class="glass-card rounded-3xl p-8 md:p-10 text-center space-y-8 max-w-4xl mx-auto">
-      <div class="space-y-3">
-        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-black">🤔 思考ワーク：なぜ「残す」のか？</span>
-        <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">
-          通常、赤血球は組織で約40%の酸素を<span class="text-emerald-600 underline underline-offset-4">残したまま</span>肺へ戻ります。<br>
-          <span class="text-rose-600">「なぜ全部（100%）降ろさないのだろう？」</span>
+    <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 max-w-5xl mx-auto text-center">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-black border border-rose-200">
+          🤔 生物設計の問い：効率 vs 安全性
+        </div>
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
+          「もし君が赤血球の設計者なら、組織で酸素を100%放出すべきか？」
         </h2>
+        <p class="text-xs md:text-sm text-slate-600 font-medium max-w-2xl mx-auto">
+          実際は約57%しか放出しません（97% → 40%）。一見「もったいない」「不効率」に見えるこのシステム、両方の設計思想のメリットとリスクを考えてみよう。
+        </p>
       </div>
 
-      <!-- 生徒に考えさせるカード (最初から答えを表示しない) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-2 text-left">
-        <!-- 問いかけ1 -->
-        <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-black text-slate-600 bg-slate-200 px-2.5 py-1 rounded-md">思考のヒント 1</span>
-            <span class="text-xs font-bold text-slate-400">🚶‍♂️ 平常時</span>
+      <!-- 対比比較カード (思考対峙型) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left items-stretch">
+        <div class="bg-blue-50/90 border-2 border-blue-300 rounded-2xl p-5 space-y-3 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="font-black text-blue-900 text-sm md:text-base">💡 案A：100% 全額放出設計（限界活用型）</span>
+              <span class="bg-blue-200 text-blue-900 text-[10px] font-black px-2.5 py-0.5 rounded-full">運搬効率 MAX</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-bold">
+              「せっかく運んだんだから全部渡そう！少ない血流量で大量の酸素を届けることができるはずだ！」
+            </p>
           </div>
-          <h3 class="text-sm font-black text-slate-800">もし平常時に酸素を100%配り切っていたら…？</h3>
-          <p class="text-xs text-slate-500 font-medium leading-relaxed">
-            急に走ったり階段を駆け上がったりして「緊急で大量の酸素が必要」になったとき、血液はどう対応するだろう？
-          </p>
+          <div class="bg-white/90 p-3.5 rounded-xl text-xs text-blue-950 font-bold border border-blue-200 shadow-sm space-y-1">
+            <p class="text-blue-700">⚠️ <strong>致命的なリスク：</strong></p>
+            <p class="text-slate-600 font-medium">急に走り出した瞬間、血液中に「予備の酸素」がゼロなので、心臓が爆発的なスピードで動かない限り細胞が一瞬で酸欠壊死する！</p>
+          </div>
         </div>
 
-        <!-- 問いかけ2 -->
-        <div class="bg-rose-50/40 border-2 border-dashed border-rose-200 rounded-2xl p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-black text-rose-700 bg-rose-100 px-2.5 py-1 rounded-md">思考のヒント 2</span>
-            <span class="text-xs font-bold text-rose-500">🏃‍♀️ 激しい運動時</span>
+        <div class="bg-emerald-50/90 border-2 border-emerald-300 rounded-2xl p-5 space-y-3 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="font-black text-emerald-900 text-sm md:text-base">🟢 案B：40% 手元に残す設計（実際の生物）</span>
+              <span class="bg-emerald-200 text-emerald-900 text-[10px] font-black px-2.5 py-0.5 rounded-full">予備能・バッファー重視</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-bold">
+              「普段は半分近く手元に残して静脈へ帰ろう。いざという時のバックアップだ！」
+            </p>
           </div>
-          <h3 class="text-sm font-black text-slate-800">筋肉が激しく動くと、血液環境はどう変化する？</h3>
-          <p class="text-xs text-slate-500 font-medium leading-relaxed">
-            CO₂の量や体温はどう変わる？ それによってヘモグロビンは酸素を放出しやすくなるかな？
-          </p>
+          <div class="bg-white/90 p-3.5 rounded-xl text-xs text-emerald-950 font-bold border border-emerald-200 shadow-sm space-y-1">
+            <p class="text-emerald-700">🔥 <strong>ボーア効果との連動（本当の凄さ）：</strong></p>
+            <p class="text-slate-600 font-medium">運動してCO₂・熱・酸が増えると、解離曲線が「右シフト」！この手元の40%から一気に酸素が自動解放される仕組み！</p>
+          </div>
         </div>
       </div>
 
-      <!-- アコーディオン解説ボタン -->
-      <div class="pt-2 border-t border-slate-200/80 space-y-4">
+      <div class="pt-2">
         <button id="v3-toggle-ans" onclick="toggleV3Answer()" class="px-6 py-3 rounded-full bg-slate-900 text-white text-xs md:text-sm font-bold hover:bg-slate-800 active:scale-95 transition-all shadow-md">
-          💡 生徒の意見を聞いたあと「解説・まとめ」を表示
+          🗣️ クラスの議論を聞いたあと「考察のまとめ」を表示
         </button>
-
-        <div id="v3-answer-box" class="hidden transition-all duration-300 bg-emerald-50/80 border border-emerald-200 rounded-2xl p-6 text-left space-y-4">
-          <div class="flex items-center gap-2 text-emerald-800 font-black text-sm">
-            <span>✨ まとめ：残しておいた40%は「緊急用の予備（ストック）」！</span>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
-            <div class="bg-white p-4 rounded-xl border border-emerald-100 space-y-1">
-              <span class="text-emerald-600 block font-black">1. 予備があるから急な運動に対応できる</span>
-              <p class="text-slate-500 font-medium leading-relaxed">平常時に約40%残しておくことで、激しい運動時に緊急で「追加の酸素」を筋肉へ一気に解離・供給できます。</p>
-            </div>
-            <div class="bg-white p-4 rounded-xl border border-emerald-100 space-y-1">
-              <span class="text-orange-600 block font-black">2. CO₂増加で自動的に解離が促進される</span>
-              <p class="text-slate-500 font-medium leading-relaxed">運動でCO₂が増えると曲線が右シフトし、ヘモグロビンが自然と酸素を放出しやすくなります（ボーア効果）。</p>
-            </div>
-          </div>
-        </div>
       </div>
 
+      <div id="v3-answer-box" class="hidden text-left bg-slate-100 border border-slate-300 p-5 rounded-2xl space-y-2 text-xs md:text-sm font-bold text-slate-800 animate-fadeIn">
+        <p class="text-emerald-700 font-black">【授業での問いかけ・発問ポイント】</p>
+        <ul class="list-disc list-inside space-y-1.5 text-slate-700 font-medium">
+          <li><strong>「静脈血は酸素ゼロ」ではない：</strong> 静脈血にもたっぷり酸素が残っている理由＝「非常用バッテリー」。</li>
+          <li><strong>ボーア効果のダイナミズム：</strong> 運動時に曲線が「右シフト」することで、このバッテリーが自動で一気に放電される。生物の洗練されたフィードバック制御を実感させる。</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- ================= 04. 発展の問い（胎児・高地） (演示用) ================= -->
+  <!-- ================= 04. 発展の問い①（胎児のヘモグロビン） (演示用) ================= -->
   <div id="view-v4" class="view-panel space-y-6">
     <div class="flex items-center justify-between">
       <button onclick="switchView('view-menu')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold transition-all">
@@ -372,88 +359,126 @@
       <span class="text-xs font-bold text-slate-400">SLIDE 04 / 提示資料</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-      
-      <!-- 問い1：胎児 -->
-      <div class="glass-card rounded-3xl p-6 space-y-4 text-center flex flex-col justify-between">
-        <div class="space-y-3">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold">
-            👶 問い1：胎児のヘモグロビン
-          </div>
-          <h3 class="text-base font-black text-slate-800 leading-snug">
-            お腹の中にいる胎児は、直接肺で呼吸できません。<br>
-            母体の血液から酸素をもらうには、曲線は<br>
-            <span class="text-blue-600">「左」</span>と<span class="text-rose-600">「右」</span>どちらにズレるべき？
-          </h3>
+    <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 max-w-5xl mx-auto">
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-black border border-blue-200">
+          👶 探究テーマ①：胎児（HbF）の進化戦略
+        </div>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900 leading-snug">
+          お腹の中の胎児は、母体の血液（胎盤）から酸素をもらう。<br>
+          曲線は<span class="text-blue-600">「左」</span>と<span class="text-rose-600">「右」</span>どちらにズレるべきか？<br>
+          <span class="text-xs text-slate-500 font-normal">※ 実は「どちらの主張」にも絶対に譲れない重要な理屈があります！</span>
+        </h2>
+      </div>
+
+      <!-- グラフと2つの立場・対話エリア -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7">
+          <svg viewBox="0 0 320 200" class="w-full h-auto bg-slate-50 rounded-2xl border border-slate-200 p-3 mx-auto shadow-inner">
+            <line x1="40" y1="170" x2="300" y2="170" stroke="#cbd5e1" stroke-width="2"/>
+            <line x1="40" y1="20" x2="40" y2="170" stroke="#cbd5e1" stroke-width="2"/>
+            <text x="170" y="193" text-anchor="middle" class="text-[11px] fill-slate-600 font-bold">酸素濃度（相対値）</text>
+            <text x="12" y="95" text-anchor="middle" class="text-[10px] fill-slate-600 font-bold" transform="rotate(-90 12 95)">酸素ヘモグロビン割合（%）</text>
+            
+            <path d="M40,170 L66,133 L92,84 L118,57 L144,43 L170,35 L196,30 L222,27 L248,25 L274,23 L300,22" fill="none" stroke="#64748b" stroke-width="3.5" stroke-linecap="round"/>
+            <text x="280" y="38" class="text-[11px] fill-slate-600 font-black">母体（標準 HbA）</text>
+            
+            <path id="fetus-left" d="M40,170 L56,110 L72,60 L98,35 L124,25 L150,21 L176,19 L202,18 L228,17 L254,16 L300,15" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
+            
+            <path id="fetus-right" d="M40,170 L80,155 L110,125 L140,88 L170,58 L200,40 L230,30 L260,24 L300,21" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
+          </svg>
         </div>
 
-        <svg viewBox="0 0 320 210" class="w-full h-auto bg-slate-50 rounded-xl border border-slate-200 p-2">
-          <line x1="40" y1="180" x2="300" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
-          <line x1="40" y1="20" x2="40" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
-          <!-- 母体曲線 -->
-          <path d="M40,180 L66,141.0 L92,89.8 L118,61.0 L144,45.9 L170,37.6 L196,32.6 L222,29.4 L248,27.4 L274,25.9 L300,24.8" fill="none" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
-          <text x="280" y="42" class="text-[9px] fill-slate-500 font-bold">母体</text>
-          
-          <!-- 胎児曲線 (左) -->
-          <path id="fetus-left" d="M40,180 L56.9,141.0 L73.8,89.8 L90.7,61.0 L107.6,45.9 L124.5,37.6 L141.4,32.6 L158.3,29.4 L175.2,27.4 L192.1,25.9 L209,24.8" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="6,4" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
-          <!-- 胎児曲線 (右) -->
-          <path id="fetus-right" d="M40,180 L75,169.0 L101,143.4 L127,116.0 L153,93.3 L179,76.2 L205,63.7 L231,54.6 L257,47.8 L283,42.9 L300,39.0" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="6,4" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
-        </svg>
-
-        <div class="space-y-2">
-          <div class="flex gap-2 justify-center">
-            <button onclick="checkFetus('left')" class="px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold hover:bg-blue-100 active:scale-95 transition-all">
-              👈 左側（結合力重視）？
+        <div class="lg:col-span-5 space-y-4">
+          <p class="text-xs font-black text-slate-700 text-center">どちらの立場の理屈を検証してみる？</p>
+          <div class="grid grid-cols-1 gap-2.5">
+            <button onclick="checkFetus('left')" class="px-4 py-3 rounded-2xl bg-blue-50 border-2 border-blue-300 text-blue-900 text-xs font-black hover:bg-blue-100 active:scale-95 transition-all shadow-sm text-left">
+              👈 「絶対に左シフト（奪い取り優先）説」を検討
             </button>
-            <button onclick="checkFetus('right')" class="px-4 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold hover:bg-rose-100 active:scale-95 transition-all">
-              👉 右側（放出力重視）？
+            <button onclick="checkFetus('right')" class="px-4 py-3 rounded-2xl bg-rose-50 border-2 border-rose-300 text-rose-900 text-xs font-black hover:bg-rose-100 active:scale-95 transition-all shadow-sm text-left">
+              👉 「絶対に右シフト（渡すの優先）説」を検討
             </button>
           </div>
-          <div id="fetus-feedback" class="text-xs font-bold min-h-[42px] flex items-center justify-center text-slate-600 px-3 bg-slate-100/60 rounded-xl leading-relaxed">
-            クラスで理由を議論してから選択してみよう！
+
+          <div id="fetus-feedback" class="text-xs font-bold min-h-[140px] flex flex-col justify-center text-slate-700 p-4 bg-slate-100/90 rounded-2xl leading-relaxed border border-slate-200">
+            ボタンを押して、それぞれの説の「強力な理屈」と「直面する課題」を比較してみよう！
           </div>
         </div>
       </div>
-
-      <!-- 問い2：高地 -->
-      <div class="glass-card rounded-3xl p-6 space-y-4 text-center flex flex-col justify-between">
-        <div class="space-y-3">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
-            🗻 問い2：富士山（標高3776m）での変化
-          </div>
-          <h3 class="text-base font-black text-slate-800 leading-snug">
-            富士山頂で息苦しくなるのは、<br>
-            曲線自体が変形するから？ それとも<br>
-            <span class="text-emerald-600">「横軸（酸素濃度）」の位置</span>が変わるから？
-          </h3>
-        </div>
-
-        <svg viewBox="0 0 320 210" class="w-full h-auto bg-slate-50 rounded-xl border border-slate-200 p-2">
-          <line x1="40" y1="180" x2="300" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
-          <line x1="40" y1="20" x2="40" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
-          <path d="M40,180 L66,141.0 L92,89.8 L118,61.0 L144,45.9 L170,37.6 L196,32.6 L222,29.4 L248,27.4 L274,25.9 L300,24.8" fill="none" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
-          <circle id="fuji-pt1" cx="300" cy="24.8" r="6" fill="#10b981" class="opacity-0 transition-opacity duration-300"/>
-          <circle id="fuji-pt2" cx="170" cy="37.6" r="6" fill="#ef4444" class="opacity-0 transition-opacity duration-300"/>
-          <line id="fuji-line" x1="300" y1="24.8" x2="170" y2="37.6" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3" class="opacity-0 transition-opacity duration-300" />
-        </svg>
-
-        <div class="space-y-2">
-          <div class="flex gap-2 justify-center">
-            <button id="btn-fuji" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 active:scale-95 transition-all">
-              💡 予想の確認・解説を見る
-            </button>
-          </div>
-          <div id="fuji-feedback" class="text-xs font-bold min-h-[42px] flex items-center justify-center text-slate-600 px-3 bg-slate-100/60 rounded-xl leading-relaxed">
-            山頂では気圧・酸素濃度はどう変化するか考えてみよう！
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- ================= 05. 生徒用インタラクティブアプリ ================= -->
+  <!-- ================= 05. 発展の問い②（高地での変化） (演示用) ================= -->
   <div id="view-v5" class="view-panel space-y-6">
+    <div class="flex items-center justify-between">
+      <button onclick="switchView('view-menu')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold transition-all">
+        ‹ 一覧に戻る (Esc)
+      </button>
+      <span class="text-xs font-bold text-slate-400">SLIDE 05 / 提示資料</span>
+    </div>
+
+    <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 max-w-5xl mx-auto">
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-200">
+          ⛰️ 探究テーマ②：富士山頂での酸素受給ジレンマ
+        </div>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900 leading-snug">
+          空気が薄い高地（肺胞の酸素分圧が低下）。<br>
+          体を適応させるなら、解離曲線はどちらにシフトさせるべきか？
+        </h2>
+      </div>
+
+      <!-- 2カラムグリッド配置 -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7">
+          <svg viewBox="0 0 320 200" class="w-full h-auto bg-slate-50 rounded-2xl border border-slate-200 p-3 mx-auto shadow-inner">
+            <defs>
+              <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <polygon points="0,0 6,3 0,6" fill="#ef4444"/>
+              </marker>
+            </defs>
+            <line x1="40" y1="170" x2="300" y2="170" stroke="#cbd5e1" stroke-width="2"/>
+            <line x1="40" y1="20" x2="40" y2="170" stroke="#cbd5e1" stroke-width="2"/>
+            <text x="170" y="193" text-anchor="middle" class="text-[11px] fill-slate-600 font-bold">酸素濃度（相対値）</text>
+            <text x="12" y="95" text-anchor="middle" class="text-[10px] fill-slate-600 font-bold" transform="rotate(-90 12 95)">酸素ヘモグロビン割合（%）</text>
+            
+            <path d="M40,170 L66,133 L92,84 L118,57 L144,43 L170,35 L196,30 L222,27 L248,25 L274,23 L300,22" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+            
+            <g id="fuji-pt1" class="opacity-0 transition-opacity duration-300">
+              <circle cx="300" cy="22" r="6" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
+              <text x="290" y="12" text-anchor="end" class="text-[11px] font-black fill-emerald-800">平地 (酸素100 → 結合率97%)</text>
+            </g>
+            
+            <g id="fuji-pt2" class="opacity-0 transition-opacity duration-300">
+              <circle cx="196" cy="30" r="6" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
+              <text x="186" y="20" text-anchor="end" class="text-[11px] font-black fill-rose-600">高地 (酸素60に急降下)</text>
+            </g>
+
+            <path id="fuji-line" d="M290,18 Q240,8 204,26" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowhead)" class="opacity-0 transition-opacity duration-300"/>
+          </svg>
+        </div>
+
+        <div class="lg:col-span-5 space-y-3">
+          <p class="text-xs font-black text-slate-700 text-center">高地適応の2大戦略：どっちを採る？</p>
+          <div class="space-y-2">
+            <button onclick="checkHighland('left')" class="w-full py-2.5 px-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs font-bold text-left hover:bg-blue-100 transition-all">
+              🔵 【左シフト戦略】薄い酸素を肺で絶対取りこぼさない！
+            </button>
+            <button onclick="checkHighland('right')" class="w-full py-2.5 px-3 rounded-xl bg-orange-50 border border-orange-200 text-orange-900 text-xs font-bold text-left hover:bg-orange-100 transition-all">
+              🟠 【右シフト戦略】届いた貴重な酸素を組織で限界放出！
+            </button>
+          </div>
+
+          <div id="fuji-feedback" class="text-xs font-bold min-h-[140px] flex flex-col justify-center text-slate-700 p-4 bg-slate-100/90 rounded-2xl leading-relaxed border border-slate-200">
+            それぞれの戦略のメリットとデメリットを考えてみよう！
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 06. 生徒用インタラクティブアプリ ================= -->
+  <div id="view-v6" class="view-panel space-y-6">
     <div class="flex items-center justify-between border-b border-slate-200 pb-3">
       <button onclick="switchView('view-menu')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold transition-all">
         ‹ 一覧に戻る (Esc)
@@ -464,26 +489,21 @@
       </div>
     </div>
 
-    <!-- メイン2カラムレイアウト -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      
-      <!-- 左カラム：循環回路 ＆ 酸素トラックシミュレーター -->
-      <div class="lg:col-span-7 space-y-5">
-        
-        <!-- 1. 人体血液循環サーキット -->
+    <!-- グリッド構造の整理（左側：生理構造とトラック動作、右側：解離曲線とクイズ） -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start max-w-6xl mx-auto">
+      <div class="lg:col-span-6 space-y-5">
         <div class="glass-card rounded-2xl p-5 space-y-3">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <div>
-              <h2 class="text-sm font-black text-slate-800 flex items-center gap-2">
+              <h2 class="text-xs md:text-sm font-black text-slate-800 flex items-center gap-2">
                 <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-4.318-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 ヒトの血液循環サーキット（体循環と肺循環）
               </h2>
-              <p class="text-xs text-slate-400">心臓のポンプ作用によって赤血球（ヘモグロビン）が全身を循環します</p>
+              <p class="text-[10px] text-slate-400">心臓のポンプ作用によって赤血球（ヘモグロビン）が全身を循環します</p>
             </div>
-            <span class="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">閉鎖血管系</span>
+            <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-lg flex-shrink-0">閉鎖血管系</span>
           </div>
 
-          <!-- 血液循環 SVG -->
           <svg viewBox="0 0 440 220" class="w-full h-auto rounded-xl bg-slate-900/95 border border-slate-800 p-2 shadow-inner" role="img">
             <defs>
               <linearGradient id="grad-lung" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -498,37 +518,33 @@
 
             <rect x="10" y="10" width="420" height="200" rx="12" fill="#0f172a" />
 
-            <!-- 1. 肺動脈 -->
             <path d="M 195 102 L 100 102 C 60 102, 40 85, 40 48 C 40 28, 60 28, 110 28" fill="none" stroke="#1e3a8a" stroke-width="4"/>
             <path id="flow-p-art" class="blood-flow-path blood-flow-stopped" d="M 195 102 L 100 102 C 60 102, 40 85, 40 48 C 40 28, 60 28, 110 28" fill="none" stroke="#60a5fa" stroke-width="4"/>
 
-            <!-- 2. 肺静脈 -->
             <path d="M 330 28 C 380 28, 400 28, 400 48 C 400 85, 380 102, 245 102" fill="none" stroke="#881337" stroke-width="4"/>
             <path id="flow-p-vein" class="blood-flow-path blood-flow-stopped" d="M 330 28 C 380 28, 400 28, 400 48 C 400 85, 380 102, 245 102" fill="none" stroke="#f43f5e" stroke-width="4"/>
 
-            <!-- 3. 大動脈 -->
             <path d="M 245 125 L 380 125 C 400 125, 400 145, 400 180 C 400 195, 380 195, 330 195" fill="none" stroke="#881337" stroke-width="4"/>
             <path id="flow-aorta" class="blood-flow-path blood-flow-stopped" d="M 245 125 L 380 125 C 400 125, 400 145, 400 180 C 400 195, 380 195, 330 195" fill="none" stroke="#f43f5e" stroke-width="4"/>
 
-            <!-- 4. 大静脈 -->
             <path d="M 110 195 C 60 195, 40 195, 40 180 C 40 145, 60 125, 195 125" fill="none" stroke="#1e3a8a" stroke-width="4"/>
             <path id="flow-vena" class="blood-flow-path blood-flow-stopped" d="M 110 195 C 60 195, 40 195, 40 180 C 40 145, 60 125, 195 125" fill="none" stroke="#60a5fa" stroke-width="4"/>
 
-            <!-- 器官ノード -->
             <g transform="translate(110, 12)">
               <rect x="0" y="0" width="220" height="34" rx="17" fill="url(#grad-lung)" stroke="#34d399" stroke-width="1.5" />
               <text x="110" y="21" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">🫁 肺胞 (ガス交換の現場)</text>
             </g>
 
-            <g transform="translate(180, 85)">
-              <rect x="0" y="0" width="80" height="48" rx="10" fill="#1e1b4b" stroke="#f43f5e" stroke-width="2"/>
-              <text x="40" y="16" text-anchor="middle" fill="#fda4af" font-size="9" font-weight="800">🫀 心臓</text>
-              <line x1="40" y1="20" x2="40" y2="44" stroke="#e11d48" stroke-width="1" stroke-dasharray="2,2"/>
-              <line x1="8" y1="32" x2="72" y2="32" stroke="#e11d48" stroke-width="1" stroke-dasharray="2,2"/>
-              <text x="24" y="28" text-anchor="middle" fill="#93c5fd" font-size="7" font-weight="700">右房</text>
-              <text x="24" y="42" text-anchor="middle" fill="#93c5fd" font-size="7" font-weight="700">右室</text>
-              <text x="56" y="28" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">左房</text>
-              <text x="56" y="42" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">左室</text>
+            <g transform="translate(165, 80)">
+              <rect x="0" y="0" width="110" height="54" rx="12" fill="#1e1b4b" stroke="#f43f5e" stroke-width="2"/>
+              <text x="55" y="14" text-anchor="middle" fill="#fda4af" font-size="9" font-weight="800">🫀 心臓</text>
+              <line x1="55" y1="18" x2="55" y2="50" stroke="#e11d48" stroke-width="1.5"/>
+              <line x1="6" y1="32" x2="22" y2="32" stroke="#3b82f6" stroke-width="1.2"/>
+              <line x1="38" y1="32" x2="50" y2="32" stroke="#3b82f6" stroke-width="1.2"/>
+              <text x="28" y="27" text-anchor="middle" fill="#93c5fd" font-size="7.5" font-weight="800">右心房</text>
+              <text x="28" y="45" text-anchor="middle" fill="#93c5fd" font-size="7.5" font-weight="800">右心室</text>
+              <text x="82" y="27" text-anchor="middle" fill="#fca5a5" font-size="7.5" font-weight="800">左心房</text>
+              <text x="82" y="45" text-anchor="middle" fill="#fca5a5" font-size="7.5" font-weight="800">左心室</text>
             </g>
 
             <g transform="translate(110, 178)">
@@ -543,15 +559,14 @@
           </svg>
         </div>
 
-        <!-- 2. 酸素トラック＆インターフェース -->
         <div class="glass-card rounded-2xl p-5 space-y-4">
-          <div class="flex items-center justify-between text-xs font-bold border-b border-slate-100 pb-2">
+          <div class="flex items-center justify-between text-xs font-bold border-b border-slate-100 pb-2 flex-wrap gap-2">
             <div class="flex items-center gap-1.5 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/50">
               <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              【肺胞】 CO₂: 40 / O₂: 100
+              【肺胞】 CO₂濃度: 40 / 酸素濃度: 100
             </div>
             <div class="flex items-center gap-1.5 text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-200/50">
-              【組織】 CO₂: 60 / O₂: 30
+              【組織】 CO₂濃度: 60 / 酸素濃度: 30
               <span class="w-2 h-2 rounded-full bg-orange-500"></span>
             </div>
           </div>
@@ -595,16 +610,12 @@
             </button>
           </div>
         </div>
-
       </div>
 
-      <!-- 右カラム：グラフ ＆ クイズ -->
-      <div class="lg:col-span-5 space-y-5">
-        
-        <!-- グラフカード -->
+      <div class="lg:col-span-6 space-y-5">
         <div class="glass-card rounded-2xl p-5 space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-            <h2 class="text-sm font-black text-slate-800 flex items-center gap-2">
+            <h2 class="text-xs md:text-sm font-black text-slate-800 flex items-center gap-2">
               <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
               酸素解離曲線グラフ
             </h2>
@@ -622,7 +633,7 @@
             </span>
           </div>
 
-          <svg id="graph" viewBox="0 0 320 210" class="w-full h-auto bg-slate-50 rounded-xl border border-slate-200/80 p-2 cursor-crosshair">
+          <svg id="graph" viewBox="0 0 320 210" class="w-full h-auto bg-slate-50 rounded-xl border border-slate-200/80 p-2 cursor-crosshair shadow-inner">
             <line x1="40" y1="180" x2="300" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
             <line x1="40" y1="20" x2="40" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
             <text x="170" y="203" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">酸素濃度（相対値）</text>
@@ -655,13 +666,12 @@
           <div id="click-trucks" class="flex gap-1 justify-center max-w-[320px] mx-auto"></div>
         </div>
 
-        <!-- クイズカード -->
         <div class="glass-card rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <h2 class="text-xs md:text-sm font-black text-slate-800">
-              点Aと点B、どっちが肺胞でどっちが組織でしょうか？
+              点Aと点Bの環境（CO₂・酸素分圧）から理由を考えよう
             </h2>
-            <button id="quiz-reset-btn" class="text-[11px] font-bold text-slate-400 hover:text-slate-600 px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 transition-all">
+            <button id="quiz-reset-btn" onclick="resetQuiz()" class="text-[11px] font-bold text-slate-400 hover:text-slate-600 px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 transition-all active:scale-95">
               リセット
             </button>
           </div>
@@ -671,11 +681,11 @@
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               <span class="text-xs font-black text-slate-700 w-10">点A</span>
               <div class="flex gap-2">
-                <button class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all" data-point="A" data-choice="肺胞">肺胞</button>
-                <button class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all" data-point="A" data-choice="組織">組織</button>
+                <button onclick="answerQuiz('A', '肺胞')" class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all">肺胞である理由</button>
+                <button onclick="answerQuiz('A', '組織')" class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all">組織である理由</button>
               </div>
             </div>
-            <div id="feedback-A" class="text-xs min-h-[20px] pl-5 leading-relaxed"></div>
+            <div id="feedback-A" class="text-xs min-h-[20px] pl-5 leading-relaxed font-bold"></div>
           </div>
 
           <div class="space-y-1.5">
@@ -683,23 +693,21 @@
               <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
               <span class="text-xs font-black text-slate-700 w-10">点B</span>
               <div class="flex gap-2">
-                <button class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all" data-point="B" data-choice="肺胞">肺胞</button>
-                <button class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all" data-point="B" data-choice="組織">組織</button>
+                <button onclick="answerQuiz('B', '肺胞')" class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all">肺胞である理由</button>
+                <button onclick="answerQuiz('B', '組織')" class="quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all">組織である理由</button>
               </div>
             </div>
-            <div id="feedback-B" class="text-xs min-h-[20px] pl-5 leading-relaxed"></div>
+            <div id="feedback-B" class="text-xs min-h-[20px] pl-5 leading-relaxed font-bold"></div>
           </div>
         </div>
 
       </div>
-
     </div>
   </div>
 
 </div>
 
 <script>
-// --- ビュー切替ロジック ＆ グラフ演算関数 ---
 function switchView(viewId) {
   document.querySelectorAll('.view-panel').forEach(function(el) {
     el.classList.remove('active');
@@ -711,14 +719,12 @@ function switchView(viewId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Escキーでダッシュボードに戻る
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     switchView('view-menu');
   }
 });
 
-// グラフプロット補間用データ・位置計算関数
 var Ay = [0, 24.4, 56.4, 74.4, 83.8, 89.0, 92.1, 94.1, 95.4, 96.3, 97.0];
 var By = [0, 6.9, 22.9, 40.0, 54.2, 64.9, 72.7, 78.4, 82.6, 85.7, 88.1];
 
@@ -740,7 +746,6 @@ function yPos(s) {
   return 180 - (s / 100) * 160;
 }
 
-// SLIDE 01 (大画面解離曲線) 答え表示トグル
 var v2AnsToggle = document.getElementById('v2-ans-toggle');
 var v2AnsGroup = document.getElementById('v2-answer-group');
 var v2AnsShown = false;
@@ -748,58 +753,7 @@ if (v2AnsToggle && v2AnsGroup) {
   v2AnsToggle.addEventListener('click', function() {
     v2AnsShown = !v2AnsShown;
     v2AnsGroup.style.opacity = v2AnsShown ? '1' : '0';
-    v2AnsToggle.textContent = v2AnsShown ? '肺・組織の答えを隠す' : '肺・組織の答えを表示';
-  });
-}
-
-// --- SLIDE 03 (解説アコーディオン制御) ---
-function toggleV3Answer() {
-  var box = document.getElementById('v3-answer-box');
-  var btn = document.getElementById('v3-toggle-ans');
-  if (!box || !btn) return;
-  if (box.classList.contains('hidden')) {
-    box.classList.remove('hidden');
-    btn.textContent = '🙈 解説を隠す（思考モードに戻る）';
-    btn.className = 'px-6 py-3 rounded-full bg-slate-200 text-slate-700 text-xs md:text-sm font-bold hover:bg-slate-300 active:scale-95 transition-all shadow-sm';
-  } else {
-    box.classList.add('hidden');
-    btn.textContent = '💡 生徒の意見を聞いたあと「解説・まとめ」を表示';
-    btn.className = 'px-6 py-3 rounded-full bg-slate-900 text-white text-xs md:text-sm font-bold hover:bg-slate-800 active:scale-95 transition-all shadow-md';
-  }
-}
-
-// --- SLIDE 04 (発展の問い) ロジック ---
-function checkFetus(choice) {
-  var fetusLeft = document.getElementById('fetus-left');
-  var fetusRight = document.getElementById('fetus-right');
-  var fb = document.getElementById('fetus-feedback');
-
-  if (choice === 'left') {
-    fetusLeft.style.opacity = '1';
-    fetusRight.style.opacity = '0';
-    fb.innerHTML = '<span class="text-blue-600 font-black">正解！「左にシフト」します。</span><br><span class="text-slate-600 font-normal">胎児は母体の血液から酸素を受け取るため、同じ酸素濃度なら母体よりも強く酸素と結合できる性質を持ちます。</span>';
-  } else {
-    fetusLeft.style.opacity = '0';
-    fetusRight.style.opacity = '1';
-    fb.innerHTML = '<span class="text-rose-600 font-black">おしい！右だと酸素を離しやすくなってしまいます。</span><br><span class="text-slate-600 font-normal">母体のヘモグロビンから酸素をうばい取るには、より結合力が強い「左シフト」が必要です。</span>';
-  }
-}
-
-var fujiShown = false;
-var btnFuji = document.getElementById('btn-fuji');
-if (btnFuji) {
-  btnFuji.addEventListener('click', function() {
-    fujiShown = !fujiShown;
-    document.getElementById('fuji-pt1').style.opacity = fujiShown ? '1' : '0';
-    document.getElementById('fuji-pt2').style.opacity = fujiShown ? '1' : '0';
-    var line = document.getElementById('fuji-line');
-    if (line) line.style.opacity = fujiShown ? '1' : '0';
-
-    document.getElementById('fuji-feedback').innerHTML = fujiShown 
-      ? '<span class="text-emerald-700 font-black">正解は「横軸の左移動（肺胞の酸素濃度低下）」！</span><br><span class="text-slate-600 font-normal">気圧が下がると肺胞での酸素濃度（100→60）が落ち込み、曲線上の位置が下がるため酸素ヘモグロビン割合が急低下します。</span>' 
-      : '山頂では気圧・酸素濃度はどう変化するか考えてみよう！';
-    
-    btnFuji.textContent = fujiShown ? '🙈 解説を隠す' : '💡 予想の確認・解説を見る';
+    v2AnsToggle.textContent = v2AnsShown ? '実際の値を隠す' : '肺・組織の実際を表示';
   });
 }
 
@@ -845,7 +799,21 @@ if (v2Graph) {
   });
 }
 
-// --- SLIDE 02 (旧03 演示用トラック) ---
+function toggleV3Answer() {
+  var box = document.getElementById('v3-answer-box');
+  var btn = document.getElementById('v3-toggle-ans');
+  if (!box || !btn) return;
+  if (box.classList.contains('hidden')) {
+    box.classList.remove('hidden');
+    btn.textContent = '🙈 解説を隠す（思考モードに戻る）';
+    btn.className = 'px-6 py-3 rounded-full bg-slate-200 text-slate-700 text-xs md:text-sm font-bold hover:bg-slate-300 active:scale-95 transition-all shadow-sm';
+  } else {
+    box.classList.add('hidden');
+    btn.textContent = '💡 生徒の意見を聞いたあと「解説・まとめ」を表示';
+    btn.className = 'px-6 py-3 rounded-full bg-slate-900 text-white text-xs md:text-sm font-bold hover:bg-slate-800 active:scale-95 transition-all shadow-md';
+  }
+}
+
 var bubbleContainer3 = document.getElementById('bubbles3');
 var bubbles3 = [];
 if (bubbleContainer3) {
@@ -961,7 +929,6 @@ if (goBtn3) {
   });
 }
 
-// --- SLIDE 04 (発展の問い) ロジック ---
 function checkFetus(choice) {
   var fetusLeft = document.getElementById('fetus-left');
   var fetusRight = document.getElementById('fetus-right');
@@ -970,133 +937,85 @@ function checkFetus(choice) {
   if (choice === 'left') {
     fetusLeft.style.opacity = '1';
     fetusRight.style.opacity = '0';
-    fb.innerHTML = '<span class="text-blue-600">正解！「左にシフト」します。</span><br><span class="text-slate-500 font-normal">胎児は母体の血液から酸素を受け取るため、より酸素と結合しやすい（親より酸素を離しにくい）性質を持ちます。</span>';
+    fb.innerHTML = `
+      <div class="space-y-1.5">
+        <p class="text-blue-700 font-black">【左シフト（奪い取り優先）説の検証】</p>
+        <p class="text-slate-800"><span class="text-emerald-600 font-black">〇 強み：</span>母体の血液（同じ酸素分圧）から、圧倒的な力で酸素を横取りできる！</p>
+        <p class="text-slate-800"><span class="text-rose-600 font-black">⚠️ 課題：</span>解離しにくくなるため、自分の組織で酸素を手放せなくなる危険がある。</p>
+        <div class="bg-blue-100/70 p-2 rounded-lg text-[11px] text-blue-950 font-medium">
+          💡 <strong>生物の解：</strong> 実際、胎児のHbFは母体より<strong>左に位置</strong>します。胎児組織の酸素分圧は非常に低いため、左にシフトしていても十分解離・供給できるように全身設計されています！
+        </div>
+      </div>
+    `;
   } else {
     fetusLeft.style.opacity = '0';
     fetusRight.style.opacity = '1';
-    fb.innerHTML = '<span class="text-rose-600">おしい！右だと酸素を離しやすくなってしまいます。</span><br><span class="text-slate-500 font-normal">母体から酸素を奪い取るには、酸素と結合しやすい「左シフト」が必要です。</span>';
+    fb.innerHTML = `
+      <div class="space-y-1.5">
+        <p class="text-rose-700 font-black">【右シフト（手放し優先）説の検証】</p>
+        <p class="text-slate-800"><span class="text-emerald-600 font-black">〇 強み：</span>胎児の体内細胞へすんなり酸素を供給・放出できる！</p>
+        <p class="text-slate-800"><span class="text-rose-600 font-black">⚠️ 課題：</span>母体から酸素を結合（回収）する力が弱まり、そもそも酸素を積み込めない！</p>
+        <div class="bg-rose-100/70 p-2 rounded-lg text-[11px] text-rose-950 font-medium">
+          💡 <strong>考察：</strong> まず「母体から奪う」ことが最優先の前提条件となるため、右シフトではなく<strong>左シフトの形（HbF）</strong>が進化的に選択されました。
+        </div>
+      </div>
+    `;
   }
 }
 
-var fujiShown = false;
-var btnFuji = document.getElementById('btn-fuji');
-if (btnFuji) {
-  btnFuji.addEventListener('click', function() {
-    fujiShown = !fujiShown;
-    document.getElementById('fuji-pt1').style.opacity = fujiShown ? '1' : '0';
-    document.getElementById('fuji-pt2').style.opacity = fujiShown ? '1' : '0';
-    document.getElementById('fuji-feedback').innerHTML = fujiShown 
-      ? '<span class="text-emerald-700">山頂では気圧が下がり、酸素濃度（相対値）が100から低下するため、ヘモグロビンに結合できる酸素の割合が大きく下がります。</span>' 
-      : '';
-  });
-}
+function checkHighland(choice) {
+  var fujiPt1 = document.getElementById('fuji-pt1');
+  var fujiPt2 = document.getElementById('fuji-pt2');
+  var line = document.getElementById('fuji-line');
+  var fb = document.getElementById('fuji-feedback');
 
-// --- SLIDE 05 生徒用アプリ ロジック ---
-function setClickTrucksPrecision(pct, color) {
-  var container = document.getElementById('click-trucks');
-  if (!container) return;
-  container.innerHTML = '';
-  for (var i = 0; i < 10; i++) {
-    var fill = Math.max(0, Math.min(100, (pct - i * 10) * 10));
-    var box = document.createElement('div');
-    box.className = 'w-5 h-5 rounded border border-slate-300 text-[8px] font-bold flex items-center justify-center';
-    if (fill > 0) {
-      box.style.background = 'linear-gradient(to right, ' + color + ' ' + fill + '%, transparent ' + fill + '%)';
-      box.style.borderColor = color;
-      box.style.color = fill >= 50 ? '#ffffff' : color;
-      box.textContent = 'O₂';
-    } else {
-      box.style.background = 'transparent';
-      box.style.borderColor = '#cbd5e1';
-      box.style.color = 'transparent';
-    }
-    container.appendChild(box);
+  if (fujiPt1) fujiPt1.style.opacity = '1';
+  if (fujiPt2) fujiPt2.style.opacity = '1';
+  if (line) line.style.opacity = '1';
+
+  if (choice === 'left') {
+    fb.innerHTML = `
+      <div class="space-y-1">
+        <p class="text-blue-700 font-black">🔵 【左シフト（肺でキャッチ）説】</p>
+        <p class="text-slate-700 font-medium">「空気が薄いんだから、結合力を高めて肺胞で1滴残らず酸素を回収すべきだ！」</p>
+        <p class="text-slate-500 font-normal text-[11px]">→ 実は一部の高地順応動物（ラマなど）は、もともとヘモグロビンの酸素親和性が高く左寄りの特性を持っています。</p>
+      </div>
+    `;
+  } else {
+    fb.innerHTML = `
+      <div class="space-y-1">
+        <p class="text-orange-700 font-black">🟠 【右シフト（組織でリリース）説】</p>
+        <p class="text-slate-700 font-medium">「肺で運べる酸素量が減るからこそ、組織で限界まで絞り出して放出させるべきだ！」</p>
+        <p class="text-slate-500 font-normal text-[11px]">→ 人間が高地に急激に適応する際、赤血球内の<strong>2,3-BPG</strong>が増加して<strong>右シフト</strong>させ、組織への供給効率を維持しようとします！</p>
+      </div>
+    `;
   }
 }
 
-var studentGraph = document.getElementById('graph');
-if (studentGraph) {
-  studentGraph.addEventListener('click', function(evt) {
-    var pt = studentGraph.createSVGPoint();
-    pt.x = evt.clientX; pt.y = evt.clientY;
-    var loc = pt.matrixTransform(studentGraph.getScreenCTM().inverse());
-    var xClamp = Math.max(40, Math.min(300, loc.x));
-    var yClamp = Math.max(20, Math.min(180, loc.y));
-    var xVal = (xClamp - 40) / 260 * 100;
-    var clickS = (180 - yClamp) / 160 * 100;
-    var Sa = interp(Ay, xVal);
-    var Sb = interp(By, xVal);
-    var chosen, color, label;
+function answerQuiz(point, choice) {
+  var fbA = document.getElementById('feedback-A');
+  var fbB = document.getElementById('feedback-B');
 
-    if (Math.abs(clickS - Sa) <= Math.abs(clickS - Sb)) {
-      chosen = Sa; color = '#10b981'; label = 'CO₂ 40 曲線';
+  if (point === 'A') {
+    if (choice === '肺胞') {
+      fbA.innerHTML = '<span class="text-emerald-700 font-black">💡 視点：</span>酸素濃度が100と高く、CO₂濃度が低い（40）。ヘモグロビン結合率97%で酸素を「積み込む」条件が揃っています。';
     } else {
-      chosen = Sb; color = '#f97316'; label = 'CO₂ 60 曲線';
+      fbA.innerHTML = '<span class="text-slate-500 font-bold">思考チェック：</span>点Aは酸素濃度100・結合率97%です。もしここが「組織」だと、酸素を全く手放せていないことになります。';
     }
-
-    var mx = xPos(xVal), my = yPos(chosen);
-    document.getElementById('pick-marker').setAttribute('cx', mx);
-    document.getElementById('pick-marker').setAttribute('cy', my);
-    document.getElementById('pick-marker').setAttribute('fill', color);
-    document.getElementById('pick-marker').setAttribute('opacity', 1);
-
-    document.getElementById('pick-x').setAttribute('x1', mx);
-    document.getElementById('pick-x').setAttribute('x2', mx);
-    document.getElementById('pick-x').setAttribute('y1', my);
-    document.getElementById('pick-x').setAttribute('y2', 180);
-    document.getElementById('pick-x').setAttribute('opacity', 1);
-
-    document.getElementById('pick-y').setAttribute('x1', 40);
-    document.getElementById('pick-y').setAttribute('x2', mx);
-    document.getElementById('pick-y').setAttribute('y1', my);
-    document.getElementById('pick-y').setAttribute('y2', my);
-    document.getElementById('pick-y').setAttribute('opacity', 1);
-
-    var integerPercent = Math.round(chosen);
-    document.getElementById('pick-readout').innerHTML = '酸素濃度 <span class="font-black text-slate-800">' + Math.round(xVal) + '</span> → 割合 <span class="font-black" style="color:' + color + ';">' + integerPercent + '%</span> （' + label + '）';
-    setClickTrucksPrecision(chosen, color);
-  });
+  } else if (point === 'B') {
+    if (choice === '組織') {
+      fbB.innerHTML = '<span class="text-emerald-700 font-black">💡 視点：</span>CO₂濃度が高く（60）曲線が右に移動。酸素濃度も30に低下し、酸素を組織へ「解離・放出」する条件に合致しています。';
+    } else {
+      fbB.innerHTML = '<span class="text-slate-500 font-bold">思考チェック：</span>点BはCO₂が多く解離曲線が右シフトしています。CO₂が大量発生している場所はどこでしょうか？';
+    }
+  }
 }
 
-// 生徒用クイズ
-var correctAnswer = { A: '肺胞', B: '組織' };
-var hints = {
-  A: 'ヒント：二酸化炭素を出してCO₂濃度が低く（40）、酸素濃度が高い環境だよ。トラックが「酸素を多く積み込む」場所はどちらかな？',
-  B: 'ヒント：細胞が代謝でCO₂を多く発生させている（60）環境だよ。トラックが「酸素を放出して届ける」場所はどちらかな？'
-};
-
-document.querySelectorAll('.quiz-btn').forEach(function(qbtn) {
-  qbtn.addEventListener('click', function() {
-    var point = qbtn.getAttribute('data-point');
-    var choice = qbtn.getAttribute('data-choice');
-    var fb = document.getElementById('feedback-' + point);
-    if (choice === correctAnswer[point]) {
-      fb.textContent = '正解です！（' + choice + '）';
-      fb.className = 'text-xs pl-5 font-bold text-emerald-600';
-      document.getElementById('label-' + point).textContent = choice;
-      document.querySelectorAll('[data-point="' + point + '"]').forEach(function(b) { b.disabled = true; b.className += ' opacity-50 cursor-not-allowed'; });
-    } else {
-      fb.textContent = hints[point];
-      fb.className = 'text-xs pl-5 font-medium text-amber-600';
-    }
-  });
-});
-
-var quizResetBtn = document.getElementById('quiz-reset-btn');
-if (quizResetBtn) {
-  quizResetBtn.addEventListener('click', function() {
-    document.getElementById('label-A').textContent = '点A';
-    document.getElementById('label-B').textContent = '点B';
-    document.getElementById('feedback-A').textContent = '';
-    document.getElementById('feedback-B').textContent = '';
-    document.querySelectorAll('.quiz-btn').forEach(function(b) { 
-      b.disabled = false; 
-      b.className = 'quiz-btn px-3 py-1 rounded-lg border border-slate-200 text-xs font-bold hover:bg-slate-50 active:scale-95 transition-all';
-    });
-  });
+function resetQuiz() {
+  document.getElementById('feedback-A').innerHTML = '';
+  document.getElementById('feedback-B').innerHTML = '';
 }
 
-// 生徒用トラックシミュレーション
 var bubbleContainer = document.getElementById('bubbles');
 var bubbles = [];
 if (bubbleContainer) {
