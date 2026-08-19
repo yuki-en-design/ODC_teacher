@@ -29,7 +29,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ガラスモーフィズム風カード */
   .glass-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
@@ -46,7 +45,6 @@
     border-color: #10b981;
   }
 
-  /* トラックバウンスアニメーション */
   @keyframes truckBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-2.5px); }
@@ -55,7 +53,6 @@
     animation: truckBounce 0.22s ease-in-out infinite;
   }
 
-  /* 酸素（O₂）バブル積み下ろしアニメーション */
   @keyframes loadBubble {
     0% { opacity: 0; transform: translate(-8px, -18px) scale(0.4); }
     50% { opacity: 1; }
@@ -94,7 +91,6 @@
     animation: unloadBubble 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   }
 
-  /* 血管内を流れる血流パルス */
   .blood-flow-path {
     stroke-dasharray: 6, 8;
     animation: flowDashForward 0.7s linear infinite;
@@ -200,18 +196,16 @@
         <line x1="45" y1="180" x2="315" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
         <line x1="45" y1="20" x2="45" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
         <text x="180" y="208" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">周囲の酸素濃度（相対値）</text>
-        <text x="14" y="100" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 100)">酸素と結合している割合（%）</text>
+        <text x="14" y="100" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 100)">酸素ヘモグロビンの割合（%）</text>
         <text x="38" y="184" text-anchor="end" class="text-[9px] fill-slate-400">0</text>
         <text x="38" y="24" text-anchor="end" class="text-[9px] fill-slate-400">100</text>
         <text x="45" y="194" text-anchor="middle" class="text-[9px] fill-slate-400">0</text>
         <text x="315" y="194" text-anchor="middle" class="text-[9px] fill-slate-400">100</text>
         <line x1="45" y1="24.8" x2="315" y2="24.8" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
 
-        <!-- CO2 = 40 曲線 -->
         <path d="M45,180 L72,141.0 L99,89.8 L126,61.0 L153,45.9 L180,37.6 L207,32.6 L234,29.4 L261,27.4 L288,25.9 L315,24.8" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
         <text x="280" y="38" class="text-[10px] fill-emerald-700 font-bold">CO₂濃度: 低</text>
         
-        <!-- CO2 = 60 曲線 -->
         <path d="M45,180 L72,169.0 L99,143.4 L126,116.0 L153,93.3 L180,76.2 L207,63.7 L234,54.6 L261,47.8 L288,42.9 L315,39.0" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round"/>
         <text x="280" y="58" class="text-[10px] fill-orange-700 font-bold">CO₂濃度: 高</text>
 
@@ -266,7 +260,7 @@
 
       <div class="space-y-1">
         <div id="status-el3" class="text-sm font-black text-slate-700 h-6">
-          地点Aでの結合割合: <span class="text-emerald-600 text-lg">97%</span>
+          地点Aで、酸素トラックを観察してみよう
         </div>
       </div>
 
@@ -297,7 +291,7 @@
             さきほどのシミュレーションで、トラック（赤血球）は地点A（肺胞 O₂: 100）で<strong class="text-emerald-600 text-lg">97%</strong>の酸素を積み込みました。
           </p>
           <p class="text-sm md:text-base text-slate-700 font-medium leading-relaxed">
-            しかし、酸素を必要としているはずの地点B（組織 O₂: 30）では、結合割合は<strong class="text-orange-600 text-lg">40%</strong>までしか下がりませんでした。つまり、<span class="border-b-2 border-rose-400">積んできた酸素の半分近くを手放さずに持ち帰ってしまった</span>ことになります。
+            しかし、酸素を必要としているはずの地点B（組織 O₂: 30）では、酸素ヘモグロビンの割合は<strong class="text-orange-600 text-lg">40%</strong>までしか下がりませんでした。つまり、<span class="border-b-2 border-rose-400">積んできた酸素の4割ほどを手放さずに持ち帰ってしまった</span>ことになります。
           </p>
         </div>
       </div>
@@ -308,7 +302,7 @@
           隣の人と議論してみよう
         </h3>
         <ul class="text-sm md:text-base font-bold leading-relaxed space-y-3">
-          <li>1. 一見すると「すごく非効率」に見えるこの仕組みですが、もしあなたが設計者なら「組織で100%全て手放す（結合割合0%にする）」ように作り変えますか？</li>
+          <li>1. 一見すると「すごく非効率」に見えるこの仕組みですが、もしあなたが設計者なら「組織で100%全て手放す（酸素ヘモグロビンの割合を0%にする）」ように作り変えますか？</li>
           <li>2. そのまま40%を残しておくことの「メリット」があるとしたら、それはどんな状況・タイミングでしょうか？</li>
         </ul>
       </div>
@@ -340,8 +334,8 @@
             <line x1="45" y1="175" x2="330" y2="175" stroke="#cbd5e1" stroke-width="1.5"/>
             <line x1="45" y1="20" x2="45" y2="175" stroke="#cbd5e1" stroke-width="1.5"/>
             <text x="185" y="200" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">周囲の酸素濃度</text>
-            <text x="14" y="98" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 98)">結合割合（%）</text>
-            
+            <text x="14" y="98" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 98)">酸素ヘモグロビンの割合（%）</text>
+
             <path d="M45,175 L73,138 L101,89 L129,62 L157,48 L185,40 L213,35 L241,32 L269,30 L297,28 L325,27" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,2" stroke-linecap="round"/>
             <text x="320" y="42" text-anchor="end" class="text-[10px] fill-slate-500 font-black">標準(母体)</text>
             
@@ -352,7 +346,6 @@
             
             <circle id="marker-mother" cx="101" cy="89" r="4" fill="#64748b" class="opacity-0 transition-opacity duration-300"/>
             <circle id="marker-left" cx="101" cy="43.6" r="5" fill="#3b82f6" class="opacity-0 transition-opacity duration-300"/>
-            <!-- 修正: 曲線パス(85,160)-(115,130)のx=101における幾何学的y座標 cy=144 に修正 -->
             <circle id="marker-right" cx="101" cy="144" r="5" fill="#ef4444" class="opacity-0 transition-opacity duration-300"/>
           </svg>
         </div>
@@ -369,7 +362,7 @@
           </div>
 
           <div id="fetus-feedback" class="text-sm font-bold min-h-[120px] flex flex-col justify-center text-slate-600 p-5 bg-slate-50 rounded-2xl leading-relaxed border border-slate-200">
-            ボタンを押して、ある酸素濃度（胎盤を想定）での「母体」と「胎児」の結合割合の差（データ）を確認してみましょう。
+            ボタンを押すと、その仮説どおりの曲線が表示されます。母体から酸素を受け取る場面を思い浮かべながら、どちらが都合が良いか考えてみましょう。
           </div>
         </div>
       </div>
@@ -402,8 +395,8 @@
             <line x1="45" y1="175" x2="330" y2="175" stroke="#cbd5e1" stroke-width="1.5"/>
             <line x1="45" y1="20" x2="45" y2="175" stroke="#cbd5e1" stroke-width="1.5"/>
             <text x="185" y="200" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">周囲の酸素濃度</text>
-            <text x="14" y="98" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 98)">結合割合（%）</text>
-            
+            <text x="14" y="98" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 98)">酸素ヘモグロビンの割合（%）</text>
+
             <path id="highland-std" d="M45,175 L73,138 L101,89 L129,62 L157,48 L185,40 L213,35 L241,32 L269,30 L297,28 L325,27" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,2" stroke-linecap="round"/>
             <path id="highland-left" d="M45,175 L61,115 L77,65 L105,40 L133,30 L161,26 L189,24 L217,23 L245,22 L273,21 L325,20" fill="none" stroke="#3b82f6" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
             <path id="highland-right" d="M45,175 L85,160 L115,130 L145,93 L175,63 L205,45 L235,35 L265,29 L325,26" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
@@ -420,7 +413,6 @@
             <circle id="hl-marker-left-tissue" cx="101" cy="43.6" r="5" fill="#3b82f6" class="opacity-0 transition-opacity duration-300"/>
             <circle id="hl-marker-left-lung" cx="213" cy="23.1" r="5" fill="#3b82f6" class="opacity-0 transition-opacity duration-300"/>
 
-            <!-- 修正: 右シフト曲線のx=101におけるy座標 cy=144 に修正 -->
             <circle id="hl-marker-right-tissue" cx="101" cy="144" r="5" fill="#f59e0b" class="opacity-0 transition-opacity duration-300"/>
             <circle id="hl-marker-right-lung" cx="213" cy="42.3" r="5" fill="#f59e0b" class="opacity-0 transition-opacity duration-300"/>
           </svg>
@@ -437,7 +429,7 @@
           </div>
 
           <div id="fuji-feedback" class="text-sm font-bold min-h-[120px] flex flex-col justify-center text-slate-600 p-5 bg-slate-50 rounded-2xl leading-relaxed border border-slate-200">
-            ボタンを押して、それぞれの戦略がもたらす「効果」と「代償（トレードオフ）」を確認し、グループで話し合ってみましょう。
+            ボタンを押すと、その戦略どおりの曲線が表示されます。それぞれのメリットとデメリット、両方を考えてグループで話し合ってみましょう。
           </div>
         </div>
       </div>
@@ -458,10 +450,8 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
-      <!-- 左カラム (7cols) -->
       <div class="lg:col-span-7 space-y-5">
         
-        <!-- 1. 人体血液循環サーキット -->
         <div class="glass-card rounded-2xl p-5 space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 pb-3">
             <div>
@@ -474,7 +464,6 @@
             <span class="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">閉鎖血管系</span>
           </div>
 
-          <!-- 血液循環 SVG -->
           <svg viewBox="0 0 440 220" class="w-full h-auto rounded-xl bg-slate-900/95 border border-slate-800 p-2 shadow-inner" role="img">
             <defs>
               <linearGradient id="grad-lung" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -489,23 +478,18 @@
 
             <rect x="10" y="10" width="420" height="200" rx="12" fill="#0f172a" />
 
-            <!-- 1. 肺動脈 (青) -->
             <path d="M 195 102 L 100 102 C 60 102, 40 85, 40 48 C 40 28, 60 28, 110 28" fill="none" stroke="#1e3a8a" stroke-width="4"/>
             <path id="flow-p-art" class="blood-flow-path blood-flow-stopped" d="M 195 102 L 100 102 C 60 102, 40 85, 40 48 C 40 28, 60 28, 110 28" fill="none" stroke="#60a5fa" stroke-width="4"/>
 
-            <!-- 2. 肺静脈 (赤) -->
             <path d="M 330 28 C 380 28, 400 28, 400 48 C 400 85, 380 102, 245 102" fill="none" stroke="#881337" stroke-width="4"/>
             <path id="flow-p-vein" class="blood-flow-path blood-flow-stopped" d="M 330 28 C 380 28, 400 28, 400 48 C 400 85, 380 102, 245 102" fill="none" stroke="#f43f5e" stroke-width="4"/>
 
-            <!-- 3. 大動脈 (赤) -->
             <path d="M 245 125 L 380 125 C 400 125, 400 145, 400 180 C 400 195, 380 195, 330 195" fill="none" stroke="#881337" stroke-width="4"/>
             <path id="flow-aorta" class="blood-flow-path blood-flow-stopped" d="M 245 125 L 380 125 C 400 125, 400 145, 400 180 C 400 195, 380 195, 330 195" fill="none" stroke="#f43f5e" stroke-width="4"/>
 
-            <!-- 4. 大静脈 (青) -->
             <path d="M 110 195 C 60 195, 40 195, 40 180 C 40 145, 60 125, 195 125" fill="none" stroke="#1e3a8a" stroke-width="4"/>
             <path id="flow-vena" class="blood-flow-path blood-flow-stopped" d="M 110 195 C 60 195, 40 195, 40 180 C 40 145, 60 125, 195 125" fill="none" stroke="#60a5fa" stroke-width="4"/>
 
-            <!-- 器官ノード -->
             <g transform="translate(110, 12)">
               <rect x="0" y="0" width="220" height="34" rx="17" fill="url(#grad-lung)" stroke="#34d399" stroke-width="1.5" />
               <text x="110" y="21" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">🫁 肺胞 (ガス交換の現場)</text>
@@ -515,15 +499,12 @@
               <rect x="0" y="0" width="80" height="48" rx="10" fill="#1e1b4b" stroke="#f43f5e" stroke-width="2"/>
               <text x="40" y="14" text-anchor="middle" fill="#fda4af" font-size="9" font-weight="800">🫀 心臓</text>
               
-              <!-- 左右を隔てる中隔 -->
               <line x1="40" y1="18" x2="40" y2="48" stroke="#e11d48" stroke-width="1.5"/>
               
-              <!-- 右心房から右心室への繋がり -->
               <line x1="4" y1="31" x2="14" y2="31" stroke="#e11d48" stroke-width="1.5"/>
               <line x1="26" y1="31" x2="40" y2="31" stroke="#e11d48" stroke-width="1.5"/>
               <path d="M 17 29 L 20 33 L 23 29" fill="none" stroke="#93c5fd" stroke-width="1.2"/>
               
-              <!-- 左心房から左心室への繋がり -->
               <line x1="40" y1="31" x2="54" y2="31" stroke="#e11d48" stroke-width="1.5"/>
               <line x1="66" y1="31" x2="76" y2="31" stroke="#e11d48" stroke-width="1.5"/>
               <path d="M 57 29 L 60 33 L 63 29" fill="none" stroke="#fca5a5" stroke-width="1.2"/>
@@ -546,7 +527,6 @@
           </svg>
         </div>
 
-        <!-- 2. 酸素トラックシミュレーター (Fix ①: O2=30に統一) -->
         <div class="glass-card rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between text-xs font-bold">
             <div class="flex items-center gap-1.5 text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200/60 shadow-sm">
@@ -600,10 +580,8 @@
         </div>
       </div>
 
-      <!-- 右カラム (5cols) -->
       <div class="lg:col-span-5 space-y-5">
         
-        <!-- 酸素解離曲線グラフ -->
         <div class="glass-card rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <h2 class="text-xs md:text-sm font-black text-slate-800 flex items-center gap-1.5">
@@ -621,7 +599,7 @@
             <line x1="45" y1="180" x2="315" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
             <line x1="45" y1="20" x2="45" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
             <text x="180" y="202" text-anchor="middle" class="text-[10px] fill-slate-500 font-bold">酸素濃度（相対値）</text>
-            <text x="14" y="100" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 100)">酸素へヘモグロビンの割合（%）</text>
+            <text x="14" y="100" text-anchor="middle" class="text-[9px] fill-slate-500 font-bold" transform="rotate(-90 14 100)">酸素ヘモグロビンの割合（%）</text>
 
             <text x="38" y="24" text-anchor="end" class="text-[9px] fill-slate-400 font-bold">100</text>
             <text x="38" y="184" text-anchor="end" class="text-[9px] fill-slate-400 font-bold">0</text>
@@ -659,7 +637,6 @@
           </div>
 
           <div class="space-y-3">
-            <!-- 点Aの選択肢 -->
             <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
               <span class="text-xs font-black text-emerald-600 flex items-center gap-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> 点A
@@ -670,7 +647,6 @@
               </div>
             </div>
 
-            <!-- 点Bの選択肢 -->
             <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
               <span class="text-xs font-black text-orange-600 flex items-center gap-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> 点B
@@ -693,7 +669,6 @@
 </div>
 
 <script>
-// ==== UI Navigation ====
 function switchView(viewId) {
   document.querySelectorAll('.view-panel').forEach(function(el) {
     el.classList.remove('active');
@@ -711,9 +686,8 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ==== Graph Data & Interpolation ====
-var Ay = [0, 24.4, 56.4, 74.4, 83.8, 89.0, 92.1, 94.1, 95.4, 96.3, 97.0]; // CO2 low (40)
-var By = [0, 6.9, 22.9, 40.0, 54.2, 64.9, 72.7, 78.4, 82.6, 85.7, 88.1]; // CO2 high (60)
+var Ay = [0, 24.4, 56.4, 74.4, 83.8, 89.0, 92.1, 94.1, 95.4, 96.3, 97.0];
+var By = [0, 6.9, 22.9, 40.0, 54.2, 64.9, 72.7, 78.4, 82.6, 85.7, 88.1];
 
 function interp(arr, x) {
   var clampedX = Math.max(0, Math.min(100, x));
@@ -728,7 +702,6 @@ function interp(arr, x) {
 function xPos(x) { return 45 + (x / 100) * 270; }
 function yPos(s) { return 180 - (s / 100) * 160; }
 
-// ==== V1 Graph Interaction ====
 var v1Graph = document.getElementById('v1-graph');
 if (v1Graph) {
   v1Graph.addEventListener('click', function(evt) {
@@ -767,11 +740,10 @@ if (v1Graph) {
     document.getElementById('v1-pick-y').setAttribute('y2', my);
     document.getElementById('v1-pick-y').setAttribute('opacity', 1);
 
-    document.getElementById('v1-readout').innerHTML = '酸素濃度: <span class="font-black">' + Math.round(xVal) + '</span> → 結合割合: <span class="font-black" style="color:' + color + ';">' + Math.round(chosen) + '%</span>';
+    document.getElementById('v1-readout').innerHTML = '酸素濃度: <span class="font-black">' + Math.round(xVal) + '</span> → 酸素ヘモグロビンの割合: <span class="font-black" style="color:' + color + ';">' + Math.round(chosen) + '%</span>';
   });
 }
 
-// ==== V2 Truck Animation ====
 var bubbleContainer3 = document.getElementById('bubbles3');
 var bubbles3 = [];
 if (bubbleContainer3) {
@@ -800,7 +772,7 @@ function setBubbles3(pct, color) {
     }
   }
 }
-setBubbles3(97, '#10b981');
+setBubbles3(0, '#cbd5e1');
 
 var particleContainer3 = document.getElementById('particle-container3');
 function spawnParticle3(type) {
@@ -864,7 +836,7 @@ if (goBtn3) {
         if (cargoGroup3) cargoGroup3.style.opacity = Math.max(0.1, currentPct / 100);
         if (truckBody3) truckBody3.setAttribute('fill', currentColor);
         
-        statusEl3.innerHTML = '結合割合が変化中: <span class="text-slate-600">' + Math.round(currentPct) + '%</span>';
+        statusEl3.innerHTML = '酸素ヘモグロビンの割合が変化中: <span class="text-slate-600">' + Math.round(currentPct) + '%</span>';
 
         if (progress < 1) {
           requestAnimationFrame(transferStep3);
@@ -874,10 +846,10 @@ if (goBtn3) {
           goBtn3.disabled = false;
 
           if (atLung3) {
-            statusEl3.innerHTML = '地点Aでの結合割合: <span class="text-emerald-600 text-lg">97%</span>';
+            statusEl3.innerHTML = '地点Aでの酸素ヘモグロビンの割合: <span class="text-emerald-600 text-lg">97%</span>';
             goBtn3.textContent = '地点Bへ移動させる';
           } else {
-            statusEl3.innerHTML = '地点Bでの結合割合: <span class="text-orange-600 text-lg">40%</span>';
+            statusEl3.innerHTML = '地点Bでの酸素ヘモグロビンの割合: <span class="text-orange-600 text-lg">40%</span>';
             goBtn3.textContent = '地点Aへ戻す';
           }
         }
@@ -888,7 +860,6 @@ if (goBtn3) {
   });
 }
 
-// ==== V4 Fetus Logic (Fixed Marker cy Alignment) ====
 function simulateFetus(choice) {
   var fetusLeft = document.getElementById('fetus-left');
   var fetusRight = document.getElementById('fetus-right');
@@ -908,36 +879,17 @@ function simulateFetus(choice) {
     mLeft.style.opacity = '1';
     mRight.style.opacity = '0';
     
-    fb.innerHTML = `
-      <div class="space-y-2">
-        <p class="text-blue-700 font-black">【データ検証：左シフトの場合】</p>
-        <ul class="text-slate-800 text-xs md:text-sm list-disc pl-5 space-y-1">
-          <li>ある酸素濃度（グラフ縦線）において、母体の結合割合は<span class="font-black">約60%</span>。</li>
-          <li>左シフトした胎児の結合割合は<span class="font-black text-blue-600">約90%</span>。</li>
-        </ul>
-        <p class="text-xs text-slate-500 mt-2">→ この状態だと、酸素は母体から胎児へ移動するか？また、胎児自身の組織には酸素を渡しやすくなるか？</p>
-      </div>
-    `;
+    fb.innerHTML = '<p class="text-blue-700 font-black">① 左シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母体の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
   } else {
     if (fetusLeft) fetusLeft.style.opacity = '0';
     if (fetusRight) fetusRight.style.opacity = '1';
     mLeft.style.opacity = '0';
     mRight.style.opacity = '1';
     
-    fb.innerHTML = `
-      <div class="space-y-2">
-        <p class="text-rose-700 font-black">【データ検証：右シフトの場合】</p>
-        <ul class="text-slate-800 text-xs md:text-sm list-disc pl-5 space-y-1">
-          <li>ある酸素濃度（グラフ縦線）において、母体の結合割合は<span class="font-black">約60%</span>。</li>
-          <li>右シフトした胎児の結合割合は<span class="font-black text-rose-600">約35%</span>。</li>
-        </ul>
-        <p class="text-xs text-slate-500 mt-2">→ この状態だと、母体のヘモグロビンと胎児のヘモグロビン、どちらが酸素を強く引きつけていることになるか？</p>
-      </div>
-    `;
+    fb.innerHTML = '<p class="text-rose-700 font-black">② 右シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母体の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
   }
 }
 
-// ==== V5 High Altitude Logic ====
 function showHighlandDilemma(choice) {
   var fb = document.getElementById('fuji-feedback');
   var hlLeft = document.getElementById('highland-left');
@@ -956,15 +908,7 @@ function showHighlandDilemma(choice) {
     if (mrTissue) mrTissue.style.opacity = '0';
     if (mrLung) mrLung.style.opacity = '0';
 
-    fb.innerHTML = `
-      <div class="space-y-2">
-        <p class="text-blue-700 font-black">【戦略Aの検証：結合力を高める（左シフト）】</p>
-        <p class="text-sm text-slate-700">
-          肺（酸素濃度60）での結合割合は<span class="font-black text-blue-600">約90%以上</span>に保たれる。薄い空気からでも確実に酸素をキャッチできる。
-        </p>
-        <p class="text-xs text-slate-500 mt-2 border-t pt-2">❓問い：では、その酸素を組織へ手放しやすくなるだろうか？</p>
-      </div>
-    `;
+    fb.innerHTML = '<p class="text-blue-700 font-black">🔵 左シフト戦略を選んだ場合</p><p class="text-slate-600 font-medium mt-1">「肺で1滴残らず酸素を回収する」ことのメリットとデメリット、両方考えてみよう。</p>';
   } else {
     if (hlLeft) hlLeft.style.opacity = '0';
     if (hlRight) hlRight.style.opacity = '1';
@@ -973,19 +917,10 @@ function showHighlandDilemma(choice) {
     if (mrTissue) mrTissue.style.opacity = '1';
     if (mrLung) mrLung.style.opacity = '1';
 
-    fb.innerHTML = `
-      <div class="space-y-2">
-        <p class="text-amber-700 font-black">【戦略Bの検証：放出力を高める（右シフト）】</p>
-        <p class="text-sm text-slate-700">
-          組織（酸素濃度30）での結合割合は<span class="font-black text-amber-600">約35%</span>まで下がり、酸素を効率よく手放すことができる。
-        </p>
-        <p class="text-xs text-slate-500 mt-2 border-t pt-2">❓問い：しかし、高地の薄い肺（酸素濃度60）で酸素を十分に取り込むことができるだろうか？</p>
-      </div>
-    `;
+    fb.innerHTML = '<p class="text-amber-700 font-black">🟠 右シフト戦略を選んだ場合</p><p class="text-slate-600 font-medium mt-1">「組織で限界まで酸素を絞り出す」ことのメリットとデメリット、両方考えてみよう。</p>';
   }
 }
 
-// ==== V6 Replaced Truck & Graph Simulation Logic ====
 var bubbleContainer = document.getElementById('bubbles');
 var bubbles = [];
 if (bubbleContainer) {
@@ -1034,25 +969,21 @@ function spawnParticle(type) {
   setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 750);
 }
 
-// Fix Issue ③: Blood flow path separation by direction
 function setBloodFlowing(isFlowing, direction) {
-  var flowPArt = document.getElementById('flow-p-art');   // 肺動脈 (心臓→肺胞)
-  var flowPVein = document.getElementById('flow-p-vein'); // 肺静脈 (肺胞→心臓)
-  var flowAorta = document.getElementById('flow-aorta');  // 大動脈 (心臓→全身組織)
-  var flowVena = document.getElementById('flow-vena');    // 大静脈 (全身組織→心臓)
+  var flowPArt = document.getElementById('flow-p-art');
+  var flowPVein = document.getElementById('flow-p-vein');
+  var flowAorta = document.getElementById('flow-aorta');
+  var flowVena = document.getElementById('flow-vena');
 
-  // すべて一時停止状態にする
   [flowPArt, flowPVein, flowAorta, flowVena].forEach(function(el) {
     if (el) el.classList.add('blood-flow-stopped');
   });
 
   if (isFlowing) {
     if (direction === 'toTissue') {
-      // 組織へ移動中：肺静脈（肺胞→心房）および大動脈（心室→組織）のみ流れる
       if (flowPVein) flowPVein.classList.remove('blood-flow-stopped');
       if (flowAorta) flowAorta.classList.remove('blood-flow-stopped');
     } else if (direction === 'toLung') {
-      // 肺へ戻り中：大静脈（組織→心房）および肺動脈（心室→肺胞）のみ流れる
       if (flowVena) flowVena.classList.remove('blood-flow-stopped');
       if (flowPArt) flowPArt.classList.remove('blood-flow-stopped');
     }
@@ -1132,7 +1063,6 @@ if (goBtn) {
   });
 }
 
-// V6 Graph Picker
 var v6Graph = document.getElementById('graph');
 if (v6Graph) {
   v6Graph.addEventListener('click', function(evt) {
@@ -1176,7 +1106,6 @@ if (v6Graph) {
   });
 }
 
-// ==== V6 クイズ判定ロジック ====
 var quizAnswers = { A: null, B: null };
 
 function answerQuiz(point, choice) {
