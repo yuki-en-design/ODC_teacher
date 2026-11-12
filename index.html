@@ -235,6 +235,26 @@ body.on-stage{overflow:hidden;height:100vh;}
 .frac>span:first-child{border-bottom:2px solid currentColor;padding:0 .25em;}
 
 
+/* 5 腕試し */
+.v5-grid{display:grid;grid-template-columns:1fr 760px;column-gap:48px;height:720px;}
+#v5-graph{height:720px;width:auto;max-width:100%;cursor:default;}
+#v5-graph .tk{font-size:9px;fill:#94a3b8;}
+#v5-graph .ax{font-size:10px;font-weight:700;fill:#64748b;}
+#v5-graph .lb{font-size:12px;font-weight:900;}
+#v5-graph .pt{font-size:11px;font-weight:900;}
+.v5s{opacity:0;transition:opacity .4s;}
+.v5s.on{opacity:1;}
+.v5-side{display:flex;flex-direction:column;gap:14px;}
+.st-v5 h2{font-size:48px;}
+.v5-cond{font-size:25px;line-height:1.5;color:var(--ink-2);background:var(--wash);border-radius:12px;padding:14px 20px;margin:0;}
+.v5-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.v5-steps li{font-size:26px;line-height:1.45;font-weight:700;color:var(--ink);opacity:0;transition:opacity .4s;display:grid;grid-template-columns:110px 1fr;align-items:center;}
+.v5-steps li.on{opacity:1;}
+.v5-steps .sn{font-size:24px;color:#fff;background:var(--ink);border-radius:8px;text-align:center;padding:4px 0;margin-right:16px;align-self:start;margin-top:4px;}
+.v5-steps .ans{color:var(--tissue);margin-left:12px;white-space:nowrap;}
+.v5-steps .frac{font-size:24px;}
+.v5-steps .frac>span{white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -254,6 +274,7 @@ body.on-stage{overflow:hidden;height:100vh;}
       <li><button onclick="switchView('view-v2')"><span class="n">2</span><span class="t">酸素トラック</span><span class="d">100台を肺胞から組織へ走らせる</span></button></li>
       <li><button onclick="switchView('view-v3')"><span class="n">3</span><span class="t">なぜ41％が残るのか</span><span class="d">２で出した数字を使って考える</span></button></li>
       <li><button onclick="switchView('view-v4')"><span class="n">4</span><span class="t">胎児のヘモグロビン</span><span class="d">使ってみよう</span></button></li>
+      <li><button onclick="switchView('view-v5')"><span class="n">5</span><span class="t">腕試しの解説</span><span class="d">共通テスト2022 富士登山</span></button></li>
     </ol>
     <p class="menu-keys">数字キーで画面を切り替え、Esc でこの一覧に戻ります</p>
    </div>
@@ -262,7 +283,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 01. 酸素解離曲線 基本データ ================= -->
   <div id="view-v1" class="view-panel">
    <div class="stage st-v1">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v1-grid">
       <div class="v1-side">
         <h2>グラフを読む</h2>
@@ -328,7 +349,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 02. 酸素トラック積み下ろし ================= -->
   <div id="view-v2" class="view-panel">
    <div class="stage st-v2">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v2-head">
       <h2>酸素トラックの動き</h2>
       <div class="legend">
@@ -363,7 +384,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 03. なぜ「一部」を残すのか？ ================= -->
   <div id="view-v3" class="view-panel">
    <div class="stage st-v3">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>この条件では、なぜ<br><span class="hot">41％</span>が残るのか？</h2>
     <p class="v3-hint">残りの41％があることには、どんな意味がある？　２で出した数字を使って説明しよう</p>
     <div class="tmpl">
@@ -378,7 +399,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 04. 胎児のヘモグロビン ================= -->
   <div id="view-v4" class="view-panel">
    <div class="stage st-v4">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>胎児のヘモグロビンは、左右どちらにずれる？</h2>
     <p class="lead">胎児は自分で呼吸ができない。胎盤で、母体の血液から酸素を受け取る。</p>
     <div class="v4-grid">
@@ -414,11 +435,57 @@ body.on-stage{overflow:hidden;height:100vh;}
    </div>
   </div>
 
+  <!-- ================= 05. 腕試し（共通テスト2022 富士登山）の解説 ================= -->
+  <div id="view-v5" class="view-panel">
+   <div class="stage st-v5">
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>問３</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab on" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <div class="v5-grid">
+      <svg id="v5-graph" viewBox="0 0 350 296" class="graph">
+        <line x1="45" y1="256" x2="315" y2="256" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="45" y1="20" x2="45" y2="256" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="72.0" y1="20" x2="72.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="99.0" y1="20" x2="99.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="126.0" y1="20" x2="126.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="153.0" y1="20" x2="153.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="180.0" y1="20" x2="180.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="207.0" y1="20" x2="207.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="234.0" y1="20" x2="234.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="261.0" y1="20" x2="261.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="288.0" y1="20" x2="288.0" y2="256" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="232.4" x2="315" y2="232.4" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="208.8" x2="315" y2="208.8" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="185.2" x2="315" y2="185.2" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="161.6" x2="315" y2="161.6" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="138.0" x2="315" y2="138.0" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="114.4" x2="315" y2="114.4" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="90.8" x2="315" y2="90.8" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="67.2" x2="315" y2="67.2" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="43.6" x2="315" y2="43.6" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><line x1="45" y1="20.0" x2="315" y2="20.0" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="3,3"/><text x="45.0" y="270" text-anchor="middle" class="tk">0</text><text x="99.0" y="270" text-anchor="middle" class="tk">20</text><text x="153.0" y="270" text-anchor="middle" class="tk">40</text><text x="207.0" y="270" text-anchor="middle" class="tk">60</text><text x="261.0" y="270" text-anchor="middle" class="tk">80</text><text x="315.0" y="270" text-anchor="middle" class="tk">100</text><text x="38" y="259.0" text-anchor="end" class="tk">0</text><text x="38" y="211.8" text-anchor="end" class="tk">20</text><text x="38" y="164.6" text-anchor="end" class="tk">40</text><text x="38" y="117.4" text-anchor="end" class="tk">60</text><text x="38" y="70.2" text-anchor="end" class="tk">80</text><text x="38" y="23.0" text-anchor="end" class="tk">100</text>
+        <text x="180" y="286" text-anchor="middle" class="ax">酸素濃度（相対値）</text>
+        <text text-anchor="middle" class="ax"><tspan x="14" y="80.0">酸</tspan><tspan x="14" y="90.2">素</tspan><tspan x="14" y="100.4">ヘ</tspan><tspan x="14" y="110.6">モ</tspan><tspan x="14" y="120.8">グ</tspan><tspan x="14" y="131.0">ロ</tspan><tspan x="14" y="141.2">ビ</tspan><tspan x="14" y="151.4">ン</tspan><tspan x="14" y="161.6">の</tspan><tspan x="14" y="171.8">割</tspan><tspan x="14" y="182.0">合</tspan><tspan x="14" y="192.2">︵</tspan><tspan x="14" y="202.4">％</tspan><tspan x="14" y="212.6">︶</tspan></text>
+        <path d="M45.0,256.0 L51.8,255.6 L58.5,253.2 L65.2,247.6 L72.0,238.0 L78.8,224.5 L85.5,207.8 L92.2,189.2 L99.0,169.9 L105.8,151.2 L112.5,133.9 L119.2,118.3 L126.0,104.7 L132.8,92.9 L139.5,82.9 L146.2,74.4 L153.0,67.2 L159.8,61.1 L166.5,56.0 L173.2,51.6 L180.0,47.9 L186.8,44.7 L193.5,41.9 L200.2,39.6 L207.0,37.5 L213.8,35.8 L220.5,34.2 L227.2,32.9 L234.0,31.7 L240.8,30.7 L247.5,29.7 L254.2,28.9 L261.0,28.2 L267.8,27.5 L274.5,26.9 L281.2,26.4 L288.0,25.9 L294.8,25.5 L301.5,25.1 L308.2,24.8 L315.0,24.4" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M45.0,256.0 L51.8,255.8 L58.5,254.8 L65.2,252.3 L72.0,247.8 L78.8,241.2 L85.5,232.3 L92.2,221.4 L99.0,208.8 L105.8,195.1 L112.5,180.9 L119.2,166.6 L126.0,152.7 L132.8,139.6 L139.5,127.4 L146.2,116.2 L153.0,106.1 L159.8,97.0 L166.5,89.0 L173.2,81.8 L180.0,75.5 L186.8,69.9 L193.5,65.0 L200.2,60.6 L207.0,56.8 L213.8,53.4 L220.5,50.3 L227.2,47.6 L234.0,45.3 L240.8,43.1 L247.5,41.2 L254.2,39.5 L261.0,38.0 L267.8,36.6 L274.5,35.4 L281.2,34.2 L288.0,33.2 L294.8,32.3 L301.5,31.4 L308.2,30.7 L315.0,30.0" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="9,6"/>
+        <text x="70" y="52" class="lb" fill="#047857">動脈血</text>
+        <text x="232" y="112" class="lb" fill="#c2410c">組織</text>
+        <g class="v5s" data-s="1">
+          <line x1="45" y1="67.2" x2="153.0" y2="67.2" stroke="#047857" stroke-width="2" stroke-dasharray="4,3"/>
+          <line x1="153.0" y1="67.2" x2="153.0" y2="256" stroke="#047857" stroke-width="2" stroke-dasharray="4,3"/>
+          <circle cx="153.0" cy="67.2" r="5.5" fill="#047857" stroke="#fff" stroke-width="1.5"/>
+          <text x="49" y="62.2" class="pt" fill="#047857">80%</text>
+          <text x="157.0" y="246" text-anchor="start" class="pt" fill="#047857">40</text>
+        </g>
+        <g class="v5s" data-s="2">
+          <line x1="99.0" y1="256" x2="99.0" y2="208.8" stroke="#c2410c" stroke-width="2" stroke-dasharray="4,3"/>
+          <line x1="45" y1="208.8" x2="99.0" y2="208.8" stroke="#c2410c" stroke-width="2" stroke-dasharray="4,3"/>
+          <circle cx="99.0" cy="208.8" r="5.5" fill="#c2410c" stroke="#fff" stroke-width="1.5"/>
+          <text x="49" y="203.8" class="pt" fill="#c2410c">20%</text>
+        </g>
+      </svg>
+      <div class="v5-side">
+        <h2>腕試し：富士登山</h2>
+        <p class="v5-cond">山頂付近　動脈血の酸素ヘモグロビンの割合 <b>80％</b>／組織の酸素濃度 <b>20</b></p>
+        <ol class="v5-steps">
+          <li data-s="0"><span class="sn">まず</span><span class="tx">置き換える。動脈血＝今日の「肺胞」、組織＝今日の「組織」。</span></li>
+          <li data-s="1"><span class="sn">８</span><span class="tx">縦軸80％から横へ → 動脈血の曲線に当たった所の真下を読む。<span class="ans">酸素濃度 40　（②）</span></span></li>
+          <li data-s="2"><span class="sn">９</span><span class="tx">組織は横軸20から上へ → 組織の曲線に当たった所を読む。<span class="ans">20％</span></span></li>
+          <li data-s="3"><span class="sn">９</span><span class="tx">渡した割合＝ <span class="frac"><span>80－20</span><span>80</span></span>＝<span class="frac"><span>60</span><span>80</span></span>＝<span class="frac"><span>3</span><span>4</span></span>＝<span class="ans">75％　（④）</span></span></li>
+          <li data-s="4"><span class="sn">同じ形</span><span class="tx">今日の問２は <span class="frac"><span>97－40</span><span>97</span></span>。場面が変わっても、「何のうちの何％か」は同じ。</span></li>
+        </ol>
+        <div class="v2-btns"><button class="btn" id="v5-next">次へ</button><button class="btn sub" id="v5-reset">最初から</button></div>
+        <p class="note" style="font-size:19px;">図は授業用に描き直したもの。読み取る点（80％→40、20→20％）は問題の図と同じ。</p>
+      </div>
+    </div>
+   </div>
+  </div>
+
 
 </div>
 
 <script>
-var VIEW_IDS = ['view-menu', 'view-v1', 'view-v2', 'view-v3', 'view-v4'];
+var VIEW_IDS = ['view-menu', 'view-v1', 'view-v2', 'view-v3', 'view-v4', 'view-v5'];
 
 function switchView(viewId, skipHash) {
   document.querySelectorAll('.view-panel').forEach(function(el) {
@@ -453,9 +520,9 @@ document.addEventListener('keydown', function(e) {
     switchView('view-menu');
     return;
   }
-  // 1〜4 で画面を直接呼び出す（投影中に一覧へ戻らずに済む）
-  if (e.key >= '1' && e.key <= '4' && !e.metaKey && !e.ctrlKey && !e.altKey) {
-    var map = {'1':'view-v1','2':'view-v2','3':'view-v3','4':'view-v4'};
+  // 1〜5 で画面を直接呼び出す（投影中に一覧へ戻らずに済む）
+  if (e.key >= '1' && e.key <= '5' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    var map = {'1':'view-v1','2':'view-v2','3':'view-v3','4':'view-v4','5':'view-v5'};
     if (map[e.key]) switchView(map[e.key]);
   }
 });
@@ -761,6 +828,25 @@ function simulateFetus(choice) {
   fit();
 })();
 
+
+// ===== 5 腕試しの解説：一段ずつ出す =====
+var v5Step = 0;
+function v5Paint() {
+  document.querySelectorAll('.v5-steps li').forEach(function (li) { li.classList.toggle('on', +li.dataset.s <= v5Step); });
+  document.querySelectorAll('.v5s').forEach(function (g) { g.classList.toggle('on', +g.dataset.s <= v5Step); });
+  var nb = document.getElementById('v5-next'); if (nb) nb.disabled = (v5Step >= 4);
+}
+function v5Next() { if (v5Step < 4) { v5Step++; v5Paint(); } }
+(function () {
+  var nb = document.getElementById('v5-next'), rb = document.getElementById('v5-reset');
+  if (nb) nb.addEventListener('click', v5Next);
+  if (rb) rb.addEventListener('click', function () { v5Step = 0; v5Paint(); });
+  document.addEventListener('keydown', function (e) {
+    var v = document.getElementById('view-v5');
+    if (v && v.classList.contains('active') && (e.key === 'ArrowRight' || e.key === ' ')) { e.preventDefault(); v5Next(); }
+  });
+  v5Paint();
+})();
 </script>
 </body>
 </html>
