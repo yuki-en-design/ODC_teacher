@@ -177,6 +177,22 @@ body.on-stage{overflow:hidden;height:100vh;}
 #v1-graph text{font-size:10px;font-weight:700;}
 #v1-graph g#v1-reveal text{font-size:9.5px;}
 
+.v1-side{gap:14px;}
+.v1-side h2{font-size:56px;}
+.v1-side .lead{font-size:30px;}
+.readout{font-size:24px;line-height:1.45;min-height:0;padding:12px 18px;}
+.readout .font-black{font-size:30px;}
+.v1-fleet{display:grid;grid-template-columns:repeat(10,26px);gap:2px 8px;justify-content:start;min-height:0;}
+.v1-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.v1-btns .btn{white-space:nowrap;}
+.btn.sm{font-size:22px;padding:10px 14px;}
+.v1-gwrap{position:relative;height:700px;}
+.v1-guide{position:absolute;inset:0 0 auto auto;width:100%;background:rgba(255,255,255,.97);border:3px solid var(--ink);border-radius:16px;padding:22px 30px;z-index:2;box-shadow:0 20px 60px rgba(21,35,59,.2);}
+.v1-guide[hidden]{display:none;}
+.v1-guide p{font-size:27px;line-height:1.5;margin:0 0 10px;color:var(--ink);}
+.v1-guide p b{color:var(--lung);margin-right:6px;}
+.v1-guide .gt{font-size:32px;font-weight:700;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:14px;}
+
 /* 2 トラック */
 .v2-head{display:flex;align-items:flex-end;justify-content:space-between;}
 .legend{display:flex;gap:32px;font-size:24px;color:var(--ink-2);}
@@ -288,9 +304,24 @@ body.on-stage{overflow:hidden;height:100vh;}
       <div class="v1-side">
         <h2>グラフを読む</h2>
         <p class="lead">曲線Ａと曲線Ｂ、どちらが肺胞で、どちらが組織か。</p>
-        <div id="v1-readout" class="readout">グラフを押すと、その点の数値が出ます</div>
-        <button id="v1-reveal-btn" class="btn">曲線の正体を表示する</button>
-        <p class="note">判別が決まってから押す。ワークシートの図と同じ曲線（Ａ＝実線、Ｂ＝破線）。</p>
+        <div id="v1-readout" class="readout">グラフを押すと、その場所でトラック100台のうち何台が酸素を積んでいるかが出ます</div>
+        <div id="v1-fleet" class="v1-fleet"></div>
+        <div class="v1-btns">
+          <button id="v1-guide-btn" class="btn sm sub">読み方</button>
+          <button id="v1-reveal-btn" class="btn sm">曲線の正体を表示する</button>
+          <button id="v1-trip-btn" class="btn sm">肺胞から組織へ</button>
+        </div>
+        <p class="note" style="font-size:20px;">右の2つは、判別が決まってから押す。</p>
+      </div>
+      <div class="v1-gwrap">
+      <div id="v1-guide" class="v1-guide" hidden>
+        <p class="gt">このグラフの読み方</p>
+        <p><b>肺胞</b>　肺の奥の小さな袋。吸った空気が入る。トラックが酸素を積む場所</p>
+        <p><b>組織</b>　筋肉や脳など、細胞が集まっているところ。トラックが酸素を届ける場所</p>
+        <p><b>ヘモグロビン</b>　赤血球の中にある、酸素を運ぶトラック</p>
+        <p><b>酸素ヘモグロビン</b>　酸素を積んでいるトラック</p>
+        <p><b>縦軸</b>　トラック100台のうち、酸素を積んでいる台数（％）</p>
+        <p><b>曲線が2本</b>　同じトラックでも、二酸化炭素が多い場所（組織）では酸素を降ろしやすくなる。だから場所ごとに1本ずつある</p>
       </div>
       <svg id="v1-graph" viewBox="0 0 350 296" class="graph">
         <line x1="45" y1="256" x2="315" y2="256" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -341,7 +372,15 @@ body.on-stage{overflow:hidden;height:100vh;}
         <line id="v1-pick-x" x1="0" y1="0" x2="0" y2="256" stroke="#475569" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
         <line id="v1-pick-y" x1="45" y1="0" x2="0" y2="0" stroke="#475569" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
         <circle id="v1-pick-marker" cx="0" cy="0" r="5.5" fill="#0f172a" stroke="#ffffff" stroke-width="1.5" opacity="0"/>
+        <g id="v1-trip" opacity="0">
+          <path id="v1-trip-path" d="" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="4,3"/>
+          <circle id="v1-trip-dot" cx="0" cy="0" r="7" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+          <rect id="v1-trip-box" x="150" y="150" width="160" height="40" rx="5" fill="#fff" stroke="#94a3b8"/>
+          <text id="v1-trip-t1" x="230" y="166" text-anchor="middle" style="font-size:10px;font-weight:700;fill:#0f172a"></text>
+          <text id="v1-trip-t2" x="230" y="181" text-anchor="middle" style="font-size:10px;font-weight:700;fill:#0f172a"></text>
+        </g>
       </svg>
+      </div>
     </div>
    </div>
   </div>
@@ -593,7 +632,9 @@ if (v1Graph) {
     document.getElementById('v1-pick-y').setAttribute('y2', my);
     document.getElementById('v1-pick-y').setAttribute('opacity', 1);
 
-    document.getElementById('v1-readout').innerHTML = '酸素濃度: <span class="font-black">' + Math.round(xVal) + '</span> → 酸素ヘモグロビンの割合: <span class="font-black" style="color:' + color + ';">' + Math.round(chosen) + '%</span>';
+    var nLoaded = Math.round(chosen);
+    document.getElementById('v1-readout').innerHTML = '酸素濃度 <span class="font-black">' + Math.round(xVal) + '</span> の場所では、100台のうち <span class="font-black" style="color:' + color + ';">' + nLoaded + '台</span> が酸素を積んでいる（＝酸素ヘモグロビン ' + nLoaded + '％）';
+    v1PaintFleet(nLoaded);
   });
 }
 
@@ -858,6 +899,50 @@ function v5Next() { if (v5Step < 4) { v5Step++; v5Paint(); } }
     if (v && v.classList.contains('active') && (e.key === 'ArrowRight' || e.key === ' ')) { e.preventDefault(); v5Next(); }
   });
   v5Paint();
+})();
+
+// ===== 画面1：トラック100台で「割合」を見せる／読み方／肺胞から組織へ =====
+var v1Fleet = null;
+function v1PaintFleet(n) {
+  var box = document.getElementById('v1-fleet');
+  if (!box) return;
+  if (!v1Fleet) { box.style.gridTemplateColumns = 'repeat(10, 26px)'; v1Fleet = buildFleet(box, 26); }
+  v1Fleet.forEach(function (t, i) { paintTruck(t, i < n ? 'loaded' : 'none'); });
+}
+(function () {
+  var gb = document.getElementById('v1-guide-btn'), g = document.getElementById('v1-guide');
+  if (gb && g) gb.addEventListener('click', function () { g.hidden = !g.hidden; gb.textContent = g.hidden ? '読み方' : '読み方を閉じる'; });
+  var tb = document.getElementById('v1-trip-btn');
+  var trip = document.getElementById('v1-trip'), dot = document.getElementById('v1-trip-dot'), path = document.getElementById('v1-trip-path');
+  var t1 = document.getElementById('v1-trip-t1'), t2 = document.getElementById('v1-trip-t2');
+  if (!tb || !trip) return;
+  var timer = null;
+  tb.addEventListener('click', function () {
+    if (timer) { clearInterval(timer); timer = null; }
+    var ax = xPos(100), ay = yPos(interp(Ay, 100)), bx = xPos(30), by = yPos(interp(By, 30));
+    var cx = xPos(62), cy = yPos(86);
+    path.setAttribute('d', 'M' + ax + ',' + ay + ' Q' + cx + ',' + cy + ' ' + bx + ',' + by);
+    trip.setAttribute('opacity', 1);
+    dot.setAttribute('cx', ax); dot.setAttribute('cy', ay); dot.setAttribute('fill', '#10b981');
+    t1.textContent = '肺胞：酸素が多く、二酸化炭素は少ない'; t2.textContent = '→ 曲線Ａの上（97％）';
+    var k = 0, steps = 60;
+    setTimeout(function () {
+      t1.textContent = '組織へ：酸素が減り、二酸化炭素が増える'; t2.textContent = '→ 曲線Ｂに乗りかえる';
+      timer = setInterval(function () {
+        k++; var u = k / steps;
+        var x = (1-u)*(1-u)*ax + 2*(1-u)*u*cx + u*u*bx, y = (1-u)*(1-u)*ay + 2*(1-u)*u*cy + u*u*by;
+        dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+        if (k >= steps) {
+          clearInterval(timer); timer = null; dot.setAttribute('fill', '#f97316');
+          t1.textContent = '組織：酸素30'; t2.textContent = '→ 曲線Ｂの上（40％）';
+          v1PaintFleet(40);
+          document.getElementById('v1-readout').innerHTML = '組織では、100台のうち <span class="font-black" style="color:#f97316;">40台</span> だけが酸素を積んだまま（＝酸素ヘモグロビン 40％）';
+        }
+      }, 40);
+    }, 1800);
+    v1PaintFleet(97);
+    document.getElementById('v1-readout').innerHTML = '肺胞では、100台のうち <span class="font-black" style="color:#10b981;">97台</span> が酸素を積んでいる（＝酸素ヘモグロビン 97％）';
+  });
 })();
 </script>
 </body>
