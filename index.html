@@ -286,8 +286,8 @@ body.on-stage{overflow:hidden;height:100vh;}
       <p class="menu-sub">ただし、覚えるだけでは解けない</p>
     </div>
     <ol class="menu-list">
-      <li><button onclick="switchView('view-v1')"><span class="n">1</span><span class="t">グラフを読む</span><span class="d">曲線Ａ・Ｂ、どちらが肺胞でどちらが組織か</span></button></li>
-      <li><button onclick="switchView('view-v2')"><span class="n">2</span><span class="t">酸素トラック</span><span class="d">100台を肺胞から組織へ走らせる</span></button></li>
+      <li><button onclick="switchView('view-v1')"><span class="n">1</span><span class="t">問題を解く</span><span class="d">曲線Ａ・Ｂ、どちらが肺胞でどちらが組織か</span></button></li>
+      <li><button onclick="switchView('view-v2')"><span class="n">2</span><span class="t">確かめる</span><span class="d">100台を肺胞から組織へ走らせる</span></button></li>
       <li><button onclick="switchView('view-v3')"><span class="n">3</span><span class="t">なぜ全部は渡さないのか</span><span class="d">２で出した数字を使って考える</span></button></li>
       <li><button onclick="switchView('view-v4')"><span class="n">4</span><span class="t">胎児のヘモグロビン</span><span class="d">使ってみよう</span></button></li>
       <li><button onclick="switchView('view-v5')"><span class="n">5</span><span class="t">腕試しの解説</span><span class="d">共通テスト2022 富士登山</span></button></li>
@@ -299,7 +299,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 01. 酸素解離曲線 基本データ ================= -->
   <div id="view-v1" class="view-panel">
    <div class="stage st-v1">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v1-grid">
       <div class="v1-side">
         <h2>グラフを読む</h2>
@@ -307,11 +307,10 @@ body.on-stage{overflow:hidden;height:100vh;}
         <div id="v1-readout" class="readout">グラフを押すと、その場所でトラック100台のうち何台が酸素を積んでいるかが出ます</div>
         <div id="v1-fleet" class="v1-fleet"></div>
         <div class="v1-btns">
-          <button id="v1-guide-btn" class="btn sm sub">読み方</button>
+          <button id="v1-guide-btn" class="btn sm sub">読み方を見る</button>
           <button id="v1-reveal-btn" class="btn sm">曲線の正体を表示する</button>
           <button id="v1-trip-btn" class="btn sm">肺胞から組織へ</button>
         </div>
-        <p class="note" style="font-size:20px;">右の2つは、判別が決まってから押す。</p>
       </div>
       <div class="v1-gwrap">
       <div id="v1-guide" class="v1-guide" hidden>
@@ -388,9 +387,9 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 02. 酸素トラック積み下ろし ================= -->
   <div id="view-v2" class="view-panel">
    <div class="stage st-v2">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v2-head">
-      <h2>酸素トラックの動き</h2>
+      <h2 style="font-size:46px;white-space:nowrap;">酸素トラック100台で確かめよう</h2>
       <div class="legend">
         <span><span class="legend-truck" data-state="loaded"></span>酸素を積んでいる</span>
         <span><span class="legend-truck" data-state="handed"></span>組織で渡した（空）</span>
@@ -406,7 +405,7 @@ body.on-stage{overflow:hidden;height:100vh;}
     </div>
     <div class="v2-foot">
       <div id="status-el3" class="status">肺胞での酸素ヘモグロビンの割合: <span class="text-emerald-600 text-lg">97%</span></div>
-      <div class="v2-btns"><button class="btn sub" onclick="document.getElementById('denom').hidden=!document.getElementById('denom').hidden">分母の表</button><button id="go-btn3" class="btn">組織へ移動させる</button></div>
+      <div class="v2-btns"><button class="btn sub" onclick="document.getElementById('denom').hidden=!document.getElementById('denom').hidden">分母の表</button><button id="go-btn3" class="btn">組織へ走らせる</button></div>
     </div>
     <div id="denom" class="denom" hidden>
       <table>
@@ -423,7 +422,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 03. なぜ「一部」を残すのか？ ================= -->
   <div id="view-v3" class="view-panel">
    <div class="stage st-v3">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>この条件では、なぜ<br><span class="hot">全部は</span>渡さないのか？</h2>
     <p class="v3-hint">全部は渡さずに残る分があることには、どんな意味がある？　２で出した数字を使って説明しよう</p>
     <div class="tmpl">
@@ -438,9 +437,9 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 04. 胎児のヘモグロビン ================= -->
   <div id="view-v4" class="view-panel">
    <div class="stage st-v4">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>胎児のヘモグロビンは、左右どちらにずれる？</h2>
-    <p class="lead">胎児は自分で呼吸ができない。胎盤で、母体の血液から酸素を受け取る。</p>
+    <p class="lead">胎児は自分で呼吸ができない。胎盤で、母親の血液から酸素を受け取る。</p>
     <div class="v4-grid">
       <svg viewBox="0 0 360 210" class="graph" id="fetus-graph">
             <line x1="45" y1="175" x2="330" y2="175" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -449,7 +448,7 @@ body.on-stage{overflow:hidden;height:100vh;}
             <text text-anchor="middle" class="text-[9px] fill-slate-500 font-bold"><tspan x="14" y="28.8">酸</tspan><tspan x="14" y="40.0">素</tspan><tspan x="14" y="51.2">ヘ</tspan><tspan x="14" y="62.5">モ</tspan><tspan x="14" y="73.7">グ</tspan><tspan x="14" y="84.9">ロ</tspan><tspan x="14" y="96.1">ビ</tspan><tspan x="14" y="107.3">ン</tspan><tspan x="14" y="118.6">の</tspan><tspan x="14" y="129.8">割</tspan><tspan x="14" y="141.0">合</tspan><tspan x="14" y="152.2">︵</tspan><tspan x="14" y="163.5">％</tspan><tspan x="14" y="174.7">︶</tspan></text>
 
             <path d="M45.0,175.0 L52.1,174.8 L59.2,173.9 L66.4,171.5 L73.5,167.4 L80.6,161.5 L87.8,153.7 L94.9,144.4 L102.0,134.2 L109.1,123.6 L116.2,113.0 L123.4,102.9 L130.5,93.4 L137.6,84.9 L144.8,77.2 L151.9,70.4 L159.0,64.5 L166.1,59.3 L173.2,54.8 L180.4,50.9 L187.5,47.5 L194.6,44.5 L201.8,41.9 L208.9,39.7 L216.0,37.7 L223.1,36.0 L230.2,34.5 L237.4,33.2 L244.5,32.0 L251.6,31.0 L259,30.0 L265.9,29.2 L273.0,28.5 L280.1,27.8 L287.2,27.2 L294.4,26.7 L301.5,26.2 L308.6,25.7 L315.8,25.3 L322.9,25.0 L330.0,24.6" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,2" stroke-linecap="round"/>
-            <text x="320" y="42" text-anchor="end" class="text-[10px] fill-slate-500 font-black">標準(母体)</text>
+            <text x="320" y="42" text-anchor="end" class="text-[10px] fill-slate-500 font-black">標準(母親)</text>
             
             <path id="fetus-left" d="M45.0,175.0 L52.1,174.5 L59.2,171.9 L66.4,165.7 L73.5,155.5 L80.6,142.2 L87.8,127.1 L94.9,111.8 L102.0,97.5 L109.1,84.8 L116.2,74.0 L123.4,65.1 L130.5,57.7 L137.6,51.7 L144.8,46.8 L151.9,42.8 L159.0,39.5 L166.1,36.8 L173.2,34.5 L180.4,32.6 L187.5,31.1 L194.6,29.7 L201.8,28.6 L208.9,27.7 L216.0,26.8 L223.1,26.1 L230.2,25.5 L237.4,25.0 L244.5,24.5 L251.6,24.1 L259,23.7 L265.9,23.4 L273.0,23.1 L280.1,22.9 L287.2,22.7 L294.4,22.4 L301.5,22.3 L308.6,22.1 L315.8,22.0 L322.9,21.8 L330.0,21.7" fill="none" stroke="#3b82f6" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
             <path id="fetus-right" d="M45.0,175.0 L52.1,175.0 L59.2,174.7 L66.4,174.0 L73.5,172.7 L80.6,170.8 L87.8,168.2 L94.9,164.7 L102.0,160.5 L109.1,155.5 L116.2,149.9 L123.4,143.8 L130.5,137.3 L137.6,130.6 L144.8,123.7 L151.9,116.9 L159.0,110.2 L166.1,103.7 L173.2,97.5 L180.4,91.6 L187.5,86.2 L194.6,81.0 L201.8,76.3 L208.9,71.9 L216.0,67.9 L223.1,64.2 L230.2,60.8 L237.4,57.7 L244.5,54.9 L251.6,52.3 L259,49.9 L265.9,47.8 L273.0,45.8 L280.1,44.0 L287.2,42.4 L294.4,40.8 L301.5,39.5 L308.6,38.2 L315.8,37.0 L322.9,36.0 L330.0,35.0" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round" class="opacity-0 transition-opacity duration-300"/>
@@ -463,10 +462,10 @@ body.on-stage{overflow:hidden;height:100vh;}
       <div class="v4-side">
         <button class="choice" onclick="simulateFetus('left')"><span class="ab">Ａ</span>曲線を左にずらす</button>
         <button class="choice" onclick="simulateFetus('right')"><span class="ab">Ｂ</span>曲線を右にずらす</button>
-        <div id="fetus-feedback" class="feedback">ボタンを押すと、その仮説どおりの曲線が出ます。母体から酸素を受け取る場面で、どちらが都合がいいか考えよう。</div>
+        <div id="fetus-feedback" class="feedback">ボタンを押すと、その仮説どおりの曲線が出ます。母親から酸素を受け取る場面で、どちらが都合がいいか考えよう。</div>
         <details class="v4-more"><summary>補足：二酸化炭素のちがい</summary><p>
-            ※　胎児の血液は母体より二酸化炭素がやや多く、胎盤で二酸化炭素を母体へ渡している。この「条件のちがい」も酸素の受け渡しを助けている。
-            ただし大きな理由は、胎児のヘモグロビンが<strong class="text-sky-700">「道具そのもの」</strong>として母体のものとちがうことにある。
+            ※　胎児の血液は母親より二酸化炭素がやや多く、胎盤で二酸化炭素を母親へ渡している。この「条件のちがい」も酸素の受け渡しを助けている。
+            ただし大きな理由は、胎児のヘモグロビンが<strong class="text-sky-700">「道具そのもの」</strong>として母親のものとちがうことにある。
             肺胞と組織の2本（同じヘモグロビンで条件だけがちがう）とは、ここがちがう。
           </p></details>
       </div>
@@ -477,7 +476,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 05. 腕試し（共通テスト2022 富士登山）の解説 ================= -->
   <div id="view-v5" class="view-panel">
    <div class="stage st-v5">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>グラフ</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>トラック</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab on" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab on" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v5-grid">
       <svg id="v5-graph" viewBox="0 0 350 296" class="graph">
         <line x1="45" y1="256" x2="315" y2="256" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -823,7 +822,7 @@ if (goBtn3) {
 
           if (atLung3) {
             statusEl3.innerHTML = '肺胞での酸素ヘモグロビンの割合: <span class="text-emerald-600 text-lg">97%</span>';
-            goBtn3.textContent = '組織へ移動させる';
+            goBtn3.textContent = '組織へ走らせる';
           } else {
             statusEl3.innerHTML = '組織での酸素ヘモグロビンの割合: <span class="text-orange-600 text-lg">40%</span>';
             goBtn3.textContent = '肺胞へ戻す';
@@ -855,14 +854,14 @@ function simulateFetus(choice) {
     mLeft.style.opacity = '1';
     mRight.style.opacity = '0';
     
-    fb.innerHTML = '<p class="text-blue-700 font-black">① 左シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母体の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
+    fb.innerHTML = '<p class="text-blue-700 font-black">① 左シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母親の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
   } else {
     if (fetusLeft) fetusLeft.style.opacity = '0';
     if (fetusRight) fetusRight.style.opacity = '1';
     mLeft.style.opacity = '0';
     mRight.style.opacity = '1';
     
-    fb.innerHTML = '<p class="text-rose-700 font-black">② 右シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母体の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
+    fb.innerHTML = '<p class="text-rose-700 font-black">② 右シフトだと、この曲線になる。</p><p class="text-slate-600 font-medium mt-1">母親の血液から酸素を受け取る場面を思い浮かべながら、これで都合が良いか考えてみよう。</p>';
   }
 }
 
@@ -918,14 +917,17 @@ function v1PaintFleet(n) {
 }
 (function () {
   var gb = document.getElementById('v1-guide-btn'), g = document.getElementById('v1-guide');
-  if (gb && g) gb.addEventListener('click', function () { g.hidden = !g.hidden; gb.textContent = g.hidden ? '読み方' : '読み方を閉じる'; });
+  if (gb && g) gb.addEventListener('click', function () { g.hidden = !g.hidden; gb.textContent = g.hidden ? '読み方を見る' : '読み方を閉じる'; });
   var tb = document.getElementById('v1-trip-btn');
   var trip = document.getElementById('v1-trip'), dot = document.getElementById('v1-trip-dot'), path = document.getElementById('v1-trip-path');
   var t1 = document.getElementById('v1-trip-t1'), t2 = document.getElementById('v1-trip-t2');
   if (!tb || !trip) return;
-  var timer = null;
+  var timer = null, wait = null, tripOn = false;
+  function tripStop() { if (timer) { clearInterval(timer); timer = null; } if (wait) { clearTimeout(wait); wait = null; } }
   tb.addEventListener('click', function () {
-    if (timer) { clearInterval(timer); timer = null; }
+    tripStop();
+    if (tripOn) { tripOn = false; trip.setAttribute('opacity', 0); tb.textContent = '肺胞から組織へ'; return; }
+    tripOn = true; tb.textContent = '乗りかえを消す';
     var ax = xPos(100), ay = yPos(interp(Ay, 100)), bx = xPos(30), by = yPos(interp(By, 30));
     var cx = xPos(40), cy = yPos(86);
     path.setAttribute('d', 'M' + ax + ',' + ay + ' Q' + cx + ',' + cy + ' ' + bx + ',' + by);
@@ -934,7 +936,8 @@ function v1PaintFleet(n) {
     dot.setAttribute('cx', ax); dot.setAttribute('cy', ay); dot.setAttribute('fill', '#10b981');
     t1.textContent = '肺胞：酸素が多く、二酸化炭素は少ない'; t2.textContent = '→ 曲線Ａの上（97％）';
     var k = 0, steps = 60;
-    setTimeout(function () {
+    wait = setTimeout(function () {
+      wait = null;
       t1.textContent = '組織へ：酸素が減り、二酸化炭素が増える'; t2.textContent = '→ 曲線Ｂに乗りかえる';
       timer = setInterval(function () {
         k++; var u = k / steps;
