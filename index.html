@@ -271,6 +271,19 @@ body.on-stage{overflow:hidden;height:100vh;}
 .v5-steps .frac{font-size:24px;}
 .v5-steps .frac>span{white-space:nowrap;}
 
+/* 0 座席 */
+.st-v0 h2{font-size:48px;margin:0 0 14px;}
+.v0-head{display:flex;justify-content:space-between;align-items:flex-start;}
+.v0-todo{margin:0;font-size:28px;font-weight:700;line-height:1.45;color:var(--ink);background:#fff7ed;border:3px solid var(--tissue);border-radius:12px;padding:10px 22px;}
+.v0-front{width:520px;margin:0 auto 26px;text-align:center;font-size:28px;font-weight:700;color:var(--ink-2);background:var(--wash);border:2px solid var(--line);border-radius:10px;padding:8px 0;}
+.v0-grid{display:flex;flex-direction:column;gap:16px;align-items:center;}
+.v0-row{display:flex;gap:44px;}
+.v0-desk{display:flex;border:3px solid var(--ink);border-radius:10px;overflow:hidden;}
+.v0-desk span{width:118px;height:82px;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700;color:var(--ink);background:#fff;}
+.v0-desk span+span{border-left:2px dashed var(--line);}
+.v0-note{text-align:center;font-size:24px;color:var(--muted);margin:18px 0 0;}
+.menu-list button{padding:14px 8px;}
+
 </style>
 </head>
 <body>
@@ -286,6 +299,7 @@ body.on-stage{overflow:hidden;height:100vh;}
       <p class="menu-sub">ただし、覚えるだけでは解けない</p>
     </div>
     <ol class="menu-list">
+      <li><button onclick="switchView('view-v0')"><span class="n">0</span><span class="t">今日の座席</span><span class="d">生物・化学室の座席表</span></button></li>
       <li><button onclick="switchView('view-v1')"><span class="n">1</span><span class="t">問題を解く</span><span class="d">曲線Ａ・Ｂ、どちらが肺胞でどちらが組織か</span></button></li>
       <li><button onclick="switchView('view-v2')"><span class="n">2</span><span class="t">確かめる</span><span class="d">100台を肺胞から組織へ走らせる</span></button></li>
       <li><button onclick="switchView('view-v3')"><span class="n">3</span><span class="t">なぜ全部は渡さないのか</span><span class="d">２で出した数字を使って考える</span></button></li>
@@ -299,7 +313,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 01. 酸素解離曲線 基本データ ================= -->
   <div id="view-v1" class="view-panel">
    <div class="stage st-v1">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab on" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v1-grid">
       <div class="v1-side">
         <h2>グラフを読む</h2>
@@ -387,7 +401,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 02. 酸素トラック積み下ろし ================= -->
   <div id="view-v2" class="view-panel">
    <div class="stage st-v2">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab on" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v2-head">
       <h2 style="font-size:46px;white-space:nowrap;">酸素トラック100台で確かめよう</h2>
       <div class="legend">
@@ -423,7 +437,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 03. なぜ「一部」を残すのか？ ================= -->
   <div id="view-v3" class="view-panel">
    <div class="stage st-v3">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab on" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>この条件では、なぜ<br><span class="hot">全部は</span>渡さないのか？</h2>
     <p class="v3-hint">全部は渡さずに残る分があることには、どんな意味がある？　２で出した数字を使って説明しよう</p>
     <div class="tmpl">
@@ -438,7 +452,7 @@ body.on-stage{overflow:hidden;height:100vh;}
   <!-- ================= 04. 胎児のヘモグロビン ================= -->
   <div id="view-v4" class="view-panel">
    <div class="stage st-v4">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab on" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <h2>胎児のヘモグロビンは、左右どちらにずれる？</h2>
     <p class="lead">胎児は自分で呼吸ができない。胎盤で、母親の血液から酸素を受け取る。</p>
     <div class="v4-grid">
@@ -473,11 +487,22 @@ body.on-stage{overflow:hidden;height:100vh;}
     </div>
    </div>
   </div>
+  
+  <!-- ================= 00. 座席表（生物・化学室） ================= -->
+  <div id="view-v0" class="view-panel">
+   <div class="stage st-v0">
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab on" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <div class="v0-head"><h2>今日の座席</h2><p class="v0-todo">座ったら Chromebook で、Classroom のリンク<br>「酸素解離曲線ワーク」を開いておこう</p></div>
+    <div class="v0-front">黒板・教卓</div>
+    <div class="v0-grid"><div class="v0-row"><div class="v0-desk"><span>1</span><span>2</span></div><div class="v0-desk"><span>3</span><span>4</span></div><div class="v0-desk"><span>5</span><span>6</span></div><div class="v0-desk"><span>7</span><span>8</span></div></div><div class="v0-row"><div class="v0-desk"><span>9</span><span>10</span></div><div class="v0-desk"><span>11</span><span>12</span></div><div class="v0-desk"><span>13</span><span>14</span></div><div class="v0-desk"><span>15</span><span>16</span></div></div><div class="v0-row"><div class="v0-desk"><span>17</span><span>18</span></div><div class="v0-desk"><span>20</span><span>21</span></div><div class="v0-desk"><span>22</span><span>23</span></div><div class="v0-desk"><span>24</span><span>25</span></div></div><div class="v0-row"><div class="v0-desk"><span>27</span><span>28</span></div><div class="v0-desk"><span>29</span><span>30</span></div><div class="v0-desk"><span>31</span><span>32</span></div><div class="v0-desk"><span>33</span><span>34</span></div></div><div class="v0-row"><div class="v0-desk"><span>35</span><span>36</span></div><div class="v0-desk"><span>37</span><span>38</span></div><div class="v0-desk"><span>39</span><span>40</span></div><div class="v0-desk"><span>41</span><span>42</span></div></div></div>
+    <p class="v0-note">となりの人がペアです</p>
+   </div>
+  </div>
 
   <!-- ================= 05. 腕試し（共通テスト2022 富士登山）の解説 ================= -->
   <div id="view-v5" class="view-panel">
    <div class="stage st-v5">
-    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab on" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
+    <header class="bar"><button class="home" onclick="switchView('view-menu')">酸素解離曲線</button><nav class="tabs"><button class="tab" onclick="switchView('view-v0')"><span class="k">0</span>座席</button><button class="tab" onclick="switchView('view-v1')"><span class="k">1</span>問題を解く</button><button class="tab" onclick="switchView('view-v2')"><span class="k">2</span>確かめる</button><button class="tab" onclick="switchView('view-v3')"><span class="k">3</span>なぜ全部渡さない？</button><button class="tab" onclick="switchView('view-v4')"><span class="k">4</span>胎児</button><button class="tab on" onclick="switchView('view-v5')"><span class="k">5</span>共テ</button></nav></header>
     <div class="v5-grid">
       <svg id="v5-graph" viewBox="0 0 350 296" class="graph">
         <line x1="45" y1="256" x2="315" y2="256" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -536,7 +561,7 @@ body.on-stage{overflow:hidden;height:100vh;}
 </div>
 
 <script>
-var VIEW_IDS = ['view-menu', 'view-v1', 'view-v2', 'view-v3', 'view-v4', 'view-v5'];
+var VIEW_IDS = ['view-menu', 'view-v0', 'view-v1', 'view-v2', 'view-v3', 'view-v4', 'view-v5'];
 
 function switchView(viewId, skipHash) {
   document.querySelectorAll('.view-panel').forEach(function(el) {
@@ -572,8 +597,8 @@ document.addEventListener('keydown', function(e) {
     return;
   }
   // 1〜5 で画面を直接呼び出す（投影中に一覧へ戻らずに済む）
-  if (e.key >= '1' && e.key <= '5' && !e.metaKey && !e.ctrlKey && !e.altKey) {
-    var map = {'1':'view-v1','2':'view-v2','3':'view-v3','4':'view-v4','5':'view-v5'};
+  if (e.key >= '0' && e.key <= '5' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    var map = {'0':'view-v0','1':'view-v1','2':'view-v2','3':'view-v3','4':'view-v4','5':'view-v5'};
     if (map[e.key]) switchView(map[e.key]);
   }
 });
