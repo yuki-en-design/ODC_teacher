@@ -410,8 +410,8 @@ body.on-stage{overflow:hidden;height:100vh;}
     <div id="denom" class="denom" hidden>
       <table>
         <tr><th></th><th>100台のうち</th><th>積んで出発した97台のうち</th></tr>
-        <tr><td>渡した</td><td>57台 → 57％</td><td><span class="frac"><span>57</span><span>97</span></span> → 59％</td></tr>
-        <tr><td>積んだまま帰る</td><td>40台 → 40％</td><td><span class="frac"><span>40</span><span>97</span></span> → 41％</td></tr>
+        <tr><td>渡した</td><td>57台 → 57％</td><td><span class="frac"><span>57</span><span>97</span></span>×100 → 59％</td></tr>
+        <tr><td>積んだまま帰る</td><td>40台 → 40％</td><td><span class="frac"><span>40</span><span>97</span></span>×100 → 41％</td></tr>
       </table>
       <p>57＋40＝97　足しても100にならない　／　59＋41＝100　足せば必ず100になる</p>
       <button class="btn" onclick="document.getElementById('denom').hidden=true">閉じる</button>
@@ -521,8 +521,8 @@ body.on-stage{overflow:hidden;height:100vh;}
           <li data-s="0"><span class="sn">まず</span><span class="tx">置き換える。動脈血＝今日の「肺胞」、組織＝今日の「組織」。</span></li>
           <li data-s="1"><span class="sn">８</span><span class="tx">縦軸80％から横へ → 動脈血の曲線に当たった所の真下を読む。<span class="ans">酸素濃度 40　（②）</span></span></li>
           <li data-s="2"><span class="sn">９</span><span class="tx">組織は横軸20から上へ → 組織の曲線に当たった所を読む。<span class="ans">20％</span></span></li>
-          <li data-s="3"><span class="sn">９</span><span class="tx">割合＝ <span class="frac"><span>80－20</span><span>80</span></span>＝<span class="frac"><span>60</span><span>80</span></span>＝<span class="frac"><span>3</span><span>4</span></span>＝0.75 → <span class="ans" style="margin-left:4px;">75％（④）</span></span></li>
-          <li data-s="4"><span class="sn">同じ形</span><span class="tx">今日の問２は <span class="frac"><span>97－40</span><span>97</span></span>。場面が変わっても、「何のうちの何％か」は同じ。</span></li>
+          <li data-s="3"><span class="sn">９</span><span class="tx" style="font-size:23px;white-space:nowrap;">割合＝ <span class="frac"><span>80－20</span><span>80</span></span>×100＝<span class="frac"><span>60</span><span>80</span></span>×100＝<span class="frac"><span>3</span><span>4</span></span>×100＝<span class="ans" style="margin-left:4px;">75％（④）</span></span></li>
+          <li data-s="4"><span class="sn">同じ形</span><span class="tx">今日の問２は <span class="frac"><span>97－40</span><span>97</span></span>×100。場面が変わっても、「何のうちの何％か」は同じ。</span></li>
         </ol>
         <div class="v2-btns"><button class="btn" id="v5-next">次へ</button><button class="btn sub" id="v5-reset">最初から</button></div>
         <p class="note" style="font-size:19px;">図は授業用に描いたもの。読み取る2点だけ問題と同じ。</p>
